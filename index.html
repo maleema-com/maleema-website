@@ -426,6 +426,41 @@ footer{background:#080807;padding:5rem 4rem 2.5rem;border-top:1px solid var(--li
         width: 100% !important;
       }
     }
+  /* MOBILE OVERFLOW FIX */
+@media (max-width:1024px) {
+  body,
+  .hero,
+  .hero-left,
+  .hero-right,
+  .threads,
+  .cotton-problem,
+  .c-stat,
+  .comparison,
+  .vision-mission,
+  .vm-block,
+  .manifesto,
+  .p-item {
+    overflow: visible !important; /* show all hidden content */
+  }
+
+  .hero {
+    display: block !important;  /* stack left & right */
+    min-height: auto !important;
+    padding: 2rem 1.5rem !important;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100% !important;
+    padding: 2rem 0 !important;
+  }
+
+  .threads {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+}
 </style>
 </head>
 <body>
