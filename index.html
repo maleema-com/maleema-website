@@ -30,7 +30,40 @@ nav.scrolled{background:rgba(14,14,11,.92);backdrop-filter:blur(18px);border-bot
 .nav-cta:hover{background:var(--gold-pale)!important}
 
 /* HERO */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;background:var(--deep)}
+.hero {
+  min-height: 100vh; /* full screen height on desktop */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* desktop 2-column layout */
+  position: relative;
+  overflow: visible; /* allow content to expand */
+  background: var(--deep);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr; /* stack vertically */
+    min-height: auto;            /* allow section to grow */
+    padding: 4rem 2rem;          /* some spacing around text */
+  }
+
+  .hero-left, .hero-right {
+    padding: 1rem 0;             /* smaller padding per column */
+  }
+
+  .hero-h1 {
+    font-size: clamp(2rem, 8vw, 4rem); /* scale text */
+  }
+
+  .hero-statement {
+    font-size: 1rem;
+  }
+
+  img, svg {
+    max-width: 100%;
+    height: auto;                /* images scale nicely */
+  }
+}
 .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 119px,rgba(201,168,76,.04) 120px);pointer-events:none}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:9rem 4rem 6rem 4rem;position:relative;z-index:2;border-right:1px solid var(--line)}
 .hero-tag{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.8rem;margin-bottom:2rem;opacity:0;animation:up .9s .2s forwards}
