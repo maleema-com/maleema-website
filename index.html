@@ -1,166 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maleema | Banana Fibre Innovation</title>
-
-
+<title>Maleema — The Cotton Alternative. Woven from Banana.</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="products.css">
 </head>
-
 <body>
+<div class="cur" id="c"></div>
+<div class="cur-r" id="cr"></div>
 
-<!-- NAVBAR -->
-
-<nav>
-
-<h2>MALEEMA</h2>
-
-<div>
-<a href="#">Home</a>
-<a href="#">About</a>
-<a href="#">Innovation</a>
-<a href="#">Impact</a>
-</div>
-
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">Male<span>ema</span></a>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#vision">Vision & Mission</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#shift">The Shift</a></li>
+    <li><a href="#order" class="nav-cta">Get Samples</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
-
-<div class="hero">
-
-<h1>Banana Fibre Revolution</h1>
-
-<p>
-Maleema transforms banana agricultural waste into premium natural textile fibre,
-creating sustainable materials for fashion, textiles, and eco-friendly products.
-</p>
-
-<button>Discover Innovation</button>
-
-</div>
-
-<!-- ABOUT -->
-
-<section>
-
-<h2>About Maleema</h2>
-
-<p>
-Maleema is a sustainable textile initiative focused on converting banana crop waste
-into valuable natural fibre. By transforming agricultural residue into textile
-materials, we reduce environmental impact while creating opportunities for farmers
-and traditional weaving communities.
-</p>
-
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">India's Banana Fibre Textile Brand</div>
+    <h1 class="hero-h1">
+      The End
+      <span class="gold-word">Of Cotton</span>
+      <span class="outline-word">Dependence</span>
+    </h1>
+    <p class="hero-statement">
+      <strong>Maleema transforms banana crop waste into premium yarn, cello sheets, and fabric</strong> — the biggest natural alternative to cotton, made without a single extra litre of water, for a fashion industry that can no longer afford the cost of the old way.
+    </p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-fill">Explore Products</a>
+      <a href="#problem" class="btn-border">See The Problem</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="threads" id="threads"></div>
+    <div class="hero-right-content">
+      <div class="vs-box">
+        <div class="vs-label">Water to make 1 cotton T-shirt</div>
+        <div class="vs-num">2,700</div>
+        <div class="vs-unit">litres of fresh water</div>
+      </div>
+      <div class="vs-divider">— VS —</div>
+      <div class="vs-box" style="animation-delay:1.2s">
+        <div class="vs-label">Extra water for banana fibre yarn</div>
+        <div class="vs-num" style="color:var(--straw)">~0</div>
+        <div class="vs-unit" style="color:rgba(242,234,216,.35)">No additional irrigation needed</div>
+      </div>
+    </div>
+    <div class="hero-badge-spin">
+      <svg viewBox="0 0 90 90" width="90" height="90">
+        <defs><path id="ct" d="M45,45 m-35,0 a35,35,0,1,1,70,0 a35,35,0,1,1,-70,0"/></defs>
+        <text font-family="DM Mono,monospace" font-size="7.5" fill="#C9A84C" letter-spacing="2.2">
+          <textPath href="#ct">MALEEMA · BANANA FIBRE · MADE IN INDIA · </textPath>
+        </text>
+        <circle cx="45" cy="45" r="3.5" fill="#C9A84C"/>
+      </svg>
+    </div>
+  </div>
 </section>
 
-<!-- MATERIAL INNOVATION -->
-
-<section>
-
-<h2>Material Innovation</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Banana Fibre</h3>
-<p>Extracted from banana stems after harvest, turning agricultural waste into a biodegradable textile resource.</p>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">Banana Fibre Yarn</div>
+    <div class="ticker-item">Zero Extra Water</div>
+    <div class="ticker-item">90% Less CO₂</div>
+    <div class="ticker-item">The Cotton Alternative</div>
+    <div class="ticker-item">Yarn · Cello · Fabric · Rope</div>
+    <div class="ticker-item">Agricultural Waste → Premium Textile</div>
+    <div class="ticker-item">India Made · World Ready</div>
+  </div>
 </div>
 
-<div class="card">
-<h3>Low Water Use</h3>
-<p>Compared to cotton, banana fibre production requires minimal additional water.</p>
-</div>
+<!-- COTTON PROBLEM -->
+<section class="cotton-problem" id="problem">
+  <div class="problem-header">
+    <div class="reveal">
+      <div class="sec-tag">The Problem With Cotton</div>
+      <h2 class="sec-h">Cotton Is<br><span class="gold">Draining</span><br><span class="outline">The Planet</span></h2>
+    </div>
+    <div class="problem-intro reveal d2">
+      <p>Cotton covers <strong>just 3% of the world's farmland</strong> — yet consumes <strong>10% of all agricultural chemicals</strong> and <strong>25% of all insecticides</strong> globally. It dominates 40% of all textile production while drying up rivers, depleting groundwater, and poisoning the land around every factory that touches it.</p>
+      <p style="margin-top:1.2rem">The fashion industry has known this for decades. And kept going anyway — because there was no viable alternative at scale. <strong>Until now. The answer was always in the banana field.</strong></p>
+    </div>
+  </div>
 
-<div class="card">
-<h3>Biodegradable</h3>
-<p>Banana fibre products naturally decompose without microplastic pollution.</p>
-</div>
-
-<div class="card">
-<h3>Rural Impact</h3>
-<p>Supports farmers and weaving communities by creating income from agricultural waste.</p>
-</div>
-
-</div>
-
+  <div class="cotton-stats reveal">
+    <div class="c-stat">
+      <div class="c-n">10K<sup>+</sup></div>
+      <div class="c-l">Litres per kg of cotton</div>
+      <p class="c-desc">To grow 1 kg of cotton lint — enough water for one person to drink for 10 years.</p>
+    </div>
+    <div class="c-stat">
+      <div class="c-n">40%</div>
+      <div class="c-l">Of global textiles</div>
+      <p class="c-desc">Cotton's stranglehold on fashion. Nearly half of all textiles on earth depend on this single, water-hungry crop.</p>
+    </div>
+    <div class="c-stat">
+      <div class="c-n">25%</div>
+      <div class="c-l">Of all insecticides used</div>
+      <p class="c-desc">Despite covering 3% of farmland, cotton consumes a quarter of every insecticide manufactured globally.</p>
+    </div>
+    <div class="c-stat">
+      <div class="c-l">Hidden water footprint</div>
+      <p class="c-desc">Europe's cotton consumption depletes water invisibly — in India, Pakistan, and Uzbekistan, not in the shop where it's sold.</p>
+    </div>
+  </div>
 </section>
 
-<!-- IMPACT -->
-
-<section class="impact">
-
-<h2>Environmental Impact</h2>
-
-<div class="impact-grid">
-
-<div>
-<div class="impact-number">95%</div>
-<p>Less Water than Cotton</p>
-</div>
-
-<div>
-<div class="impact-number">100%</div>
-<p>Biodegradable Fibre</p>
-</div>
-
-<div>
-<div class="impact-number">0</div>
-<p>Synthetic Microplastics</p>
-</div>
-
-<div>
-<div class="impact-number">1 Crop</div>
-<p>Multiple Sustainable Materials</p>
-</div>
-
-</div>
-
+<!-- PRODUCTS SECTION -->
+<section class="products-strip" id="products">
+  <div class="products-header reveal">
+    <div class="sec-tag">Our Products</div>
+    <p>Explore the range of sustainable products from Maleema — from yarn to fabric and more.</p>
+  </div>
+  <div class="p-row">
+    <div class="p-item">
+      <span class="p-item-icon">🧵</span>
+      <div class="p-item-name">Banana Yarn</div>
+      <div class="p-item-sub">Premium Yarn</div>
+      <div class="p-item-desc">Soft, sustainable yarn made from banana fiber waste.</div>
+      <a href="#" class="p-item-link">Learn More</a>
+    </div>
+    <div class="p-item">
+      <span class="p-item-icon">📄</span>
+      <div class="p-item-name">Cello Sheets</div>
+      <div class="p-item-sub">Eco Sheets</div>
+      <div class="p-item-desc">Versatile sheets crafted for textiles and creative applications.</div>
+      <a href="#" class="p-item-link">Learn More</a>
+    </div>
+    <div class="p-item">
+      <span class="p-item-icon">🧵</span>
+      <div class="p-item-name">Woven Fabric</div>
+      <div class="p-item-sub">Handwoven Textile</div>
+      <div class="p-item-desc">Beautifully crafted fabrics made from banana fiber.</div>
+      <a href="#" class="p-item-link">Learn More</a>
+    </div>
+    <div class="p-item">
+      <span class="p-item-icon">🪢</span>
+      <div class="p-item-name">Rope & Cord</div>
+      <div class="p-item-sub">Durable</div>
+      <div class="p-item-desc">Strong ropes and cords for industrial and craft use.</div>
+      <a href="#" class="p-item-link">Learn More</a>
+    </div>
+    <div class="p-item">
+      <span class="p-item-icon">🧶</span>
+      <div class="p-item-name">Craft Fibre</div>
+      <div class="p-item-sub">For Crafts</div>
+      <div class="p-item-desc">Reusable banana fiber for DIY crafts and projects.</div>
+      <a href="#" class="p-item-link">Learn More</a>
+    </div>
+    <div class="p-item">
+      <span class="p-item-icon">📦</span>
+      <div class="p-item-name">Sample Kit</div>
+      <div class="p-item-sub">Try Before You Buy</div>
+      <div class="p-item-desc">Get a curated sample kit of Maleema's products.</div>
+      <a href="#" class="p-item-link">Order Now</a>
+    </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
-
-<footer>
-
-<div class="footer-grid">
-
-<div>
-<h4>Products</h4>
-<a href="#">Banana Yarn</a>
-<a href="#">Cello Sheets</a>
-<a href="#">Woven Fabric</a>
-<a href="#">Rope & Cord</a>
-<a href="#">Craft Fibre</a>
-<a href="#">Sample Kit</a>
-</div>
-
-<div>
-<h4>Brand</h4>
-<a href="#">Vision & Mission</a>
-<a href="#">Impact & SDGs</a>
-<a href="#">Farmer Partners</a>
-<a href="#">Certifications</a>
-</div>
-
-<div>
-<h4>Contact</h4>
-<a href="#">hello@maleema.in</a>
-<a href="#">+91 98765 43210</a>
-<a href="#">WhatsApp Chat</a>
-<a href="#">Download Catalogue</a>
-</div>
-
-</div>
-
-<div class="footer-bottom">
-
-<p>© 2026 Maleema — Sustainable Banana Fibre Innovation</p>
-
-</div>
-
-</footer>
-
+<script src="script.js"></script>
 </body>
 </html>
