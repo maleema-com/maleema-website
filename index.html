@@ -277,6 +277,41 @@ footer{background:#080807;padding:5rem 4rem 2.5rem;border-top:1px solid var(--li
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .85s ease,transform .85s ease}
 .reveal.vis{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+  @media (max-width: 768px) {
+  .hero {
+    display: block; /* stack left & right vertically */
+    min-height: auto; /* grow with content */
+    padding: 2rem; /* optional space around */
+    overflow: visible; /* show all content */
+  }
+
+  .hero-left, .hero-right {
+    padding: 2rem 0; /* spacing inside columns */
+  }
+}
+  @media (max-width: 768px) {
+  .hero-h1 {
+    font-size: clamp(2rem, 6vw, 4rem); /* smaller for mobile */
+    line-height: 1.1;
+  }
+
+  .hero-statement {
+    font-size: 1rem;
+    max-width: 100%; /* use full width */
+  }
+
+  .hero-btns {
+    flex-direction: column; /* buttons stack */
+    gap: 1rem;
+  }
+
+  .hero-badge-spin {
+    width: 60px;
+    height: 60px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
 </style>
 </head>
 <body>
