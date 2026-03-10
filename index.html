@@ -338,6 +338,69 @@ footer{background:#080807;padding:5rem 4rem 2.5rem;border-top:1px solid var(--li
     height: auto;
   }
 }
+  /* MOBILE / TABLET RESPONSIVE HERO */
+@media (max-width: 1024px) {
+  .hero {
+    display: block;
+    min-height: auto;
+    padding: 4rem 2rem;
+    overflow: visible;
+  }
+
+  .hero-left, .hero-right {
+    padding: 2rem 0;
+    border: none;
+  }
+
+  .hero-left {
+    text-align: center;
+  }
+
+  .hero-right {
+    background-color: var(--forest) !important;
+  }
+
+  .hero-right-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 2rem;
+  }
+
+  .threads {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-btns {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero-h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1.1;
+  }
+
+  .hero-statement {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .vs-num {
+    font-size: clamp(3rem, 10vw, 5rem);
+  }
+
+  .vs-unit {
+    font-size: 0.9rem;
+  }
+}
 </style>
 </head>
 <body>
