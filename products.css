@@ -1,0 +1,15 @@
+/* PRODUCTS SECTION */
+.products-strip{background:var(--deep);padding:8rem 4rem}
+.products-header{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:end;margin-bottom:4rem}
+.products-header p{font-size:1.1rem;line-height:1.85;color:rgba(242,234,216,.5);font-weight:300}
+.p-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.p-item{background:var(--deep);padding:2.5rem;position:relative;overflow:hidden;transition:background .4s}
+.p-item:hover{background:#14140E}
+.p-item::before{content:'';position:absolute;top:0;left:0;width:2px;bottom:0;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .4s}
+.p-item:hover::before{transform:scaleY(1)}
+.p-item-icon{font-size:2rem;margin-bottom:1.2rem;display:block}
+.p-item-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.06em;color:var(--cream);margin-bottom:.4rem}
+.p-item-sub{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;opacity:.8}
+.p-item-desc{font-size:.95rem;line-height:1.7;color:rgba(242,234,216,.4);font-weight:300;margin-bottom:1.2rem}
+.p-item-link{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:letter-spacing .3s}
+.p-item-link:hover{letter-spacing:.25em}
