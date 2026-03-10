@@ -401,6 +401,31 @@ footer{background:#080807;padding:5rem 4rem 2.5rem;border-top:1px solid var(--li
     font-size: 0.9rem;
   }
 }
+   /* Mobile overflow fix for all sections */
+    @media (max-width:1024px) {
+      .hero-right,
+      .threads,
+      .cotton-problem,
+      .c-stat,
+      .comparison,
+      .vision-mission,
+      .vm-block,
+      .manifesto,
+      .p-item {
+        overflow: visible !important; /* allow content to expand */
+        padding: 4rem 2rem !important; /* reduce padding on mobile */
+      }
+
+      .hero {
+        display: block !important; /* stack left & right columns */
+        min-height: auto !important;
+      }
+
+      .hero-left, 
+      .hero-right {
+        width: 100% !important;
+      }
+    }
 </style>
 </head>
 <body>
