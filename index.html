@@ -1,1086 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maleema — The Cotton Alternative. Woven from Banana.</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Maleema — Banana Fibre. Reimagined.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --ink:#0E0E0B; --deep:#141410; --forest:#1A2A14; --gold:#C9A84C;
-  --gold-pale:#E8CC80; --cream:#F2EAD8; --straw:#DDD0A8; --pale:#FAF7F0;
-  --moss:#3A4E28; --olive:#606E38; --muted:#8A8070; --line:rgba(201,168,76,.18);
+:root{
+  --navy:#050d1f;--deep:#0a1a38;--mid:#0e2454;--royal:#1a3a8f;
+  --blue:#2563eb;--bright:#3b82f6;--sky:#60a5fa;--ice:#bfdbfe;
+  --frost:#eff6ff;--white:#ffffff;--electric:#38bdf8;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--ink);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;cursor:none}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:997}
-.cur{width:9px;height:9px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s}
-.cur-r{width:32px;height:32px;border:1px solid var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;opacity:.7}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 4rem;transition:background .5s,border .5s}
-nav.scrolled{background:rgba(14,14,11,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.2em;color:var(--cream);text-decoration:none}
-.logo span{color:var(--gold)}
-.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
-.nav-links a{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--straw);text-decoration:none;transition:color .3s}
-.nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--gold)!important;color:var(--ink)!important;padding:.55rem 1.4rem;font-weight:500;transition:background .3s!important}
-.nav-cta:hover{background:var(--gold-pale)!important}
-
-/* HERO */
-.hero {
-  min-height: 100vh; /* full screen height on desktop */
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* desktop 2-column layout */
-  position: relative;
-  overflow: visible; /* allow content to expand */
-  background: var(--deep);
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 5vw;
+  background:rgba(5,13,31,.95);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(96,165,250,.12);
 }
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;font-style:italic;color:var(--white);}
+.nav-logo span{color:var(--sky);}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.8px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--sky);}
+.nav-cta{background:var(--blue);color:var(--white);padding:9px 22px;border-radius:6px;font-weight:700;font-size:.78rem;text-decoration:none;white-space:nowrap;border:1px solid rgba(96,165,250,.25);transition:all .2s;}
+.nav-cta:hover{background:var(--bright);}
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .hero {
-    grid-template-columns: 1fr; /* stack vertically */
-    min-height: auto;            /* allow section to grow */
-    padding: 4rem 2rem;          /* some spacing around text */
-  }
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;padding:4px;background:none;border:none;}
+.hamburger span{display:block;height:2px;background:var(--white);border-radius:2px;transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-  .hero-left, .hero-right {
-    padding: 1rem 0;             /* smaller padding per column */
-  }
-
-  .hero-h1 {
-    font-size: clamp(2rem, 8vw, 4rem); /* scale text */
-  }
-
-  .hero-statement {
-    font-size: 1rem;
-  }
-
-  img, svg {
-    max-width: 100%;
-    height: auto;                /* images scale nicely */
-  }
+/* Mobile drawer */
+.mobile-menu{
+  display:none;position:fixed;inset:0;top:60px;z-index:190;
+  background:rgba(5,13,31,.98);backdrop-filter:blur(20px);
+  padding:32px 5vw;flex-direction:column;gap:0;
+  border-top:1px solid rgba(96,165,250,.12);overflow-y:auto;
 }
-.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 119px,rgba(201,168,76,.04) 120px);pointer-events:none}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:9rem 4rem 6rem 4rem;position:relative;z-index:2;border-right:1px solid var(--line)}
-.hero-tag{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.8rem;margin-bottom:2rem;opacity:0;animation:up .9s .2s forwards}
-.hero-tag::before{content:'';width:32px;height:1px;background:var(--gold)}
-.hero-h1{
-font-family:'Bebas Neue',sans-serif;
-font-size:clamp(3rem,7vw,8rem);
-line-height:.9;
-letter-spacing:.04em;
-color:var(--cream);
-margin-bottom:1.5rem;
-opacity:0;
-animation:up .9s .4s forwards;
-}
+.mobile-menu.open{display:flex;}
+.mobile-menu li{list-style:none;border-bottom:1px solid rgba(96,165,250,.08);}
+.mobile-menu a{display:block;padding:18px 0;color:rgba(255,255,255,.75);text-decoration:none;font-size:1rem;font-weight:500;letter-spacing:.5px;transition:color .2s;}
+.mobile-menu a:hover{color:var(--sky);}
+.mobile-menu .mob-cta{margin-top:24px;background:var(--blue);color:var(--white);padding:16px;border-radius:8px;text-align:center;font-weight:700;font-size:1rem;text-decoration:none;display:block;}
 
-.hero{
-padding:80px 20px;
-}
+/* ── HERO ── */
+#hero{min-height:100svh;position:relative;overflow:hidden;display:flex;align-items:center;padding:100px 5vw 60px;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 60% 40%,rgba(37,99,235,.35) 0%,transparent 65%),radial-gradient(ellipse 50% 60% at 10% 80%,rgba(56,189,248,.12) 0%,transparent 55%),var(--navy);}
+.hero-bg-img{position:absolute;inset:0;background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Banana_plantation_in_Martinique.jpg/1280px-Banana_plantation_in_Martinique.jpg') center/cover;opacity:.06;mix-blend-mode:luminosity;}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;width:100%;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sky);margin-bottom:24px;}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--sky);display:inline-block;}
+h1.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5.8rem);font-weight:700;line-height:.95;letter-spacing:-1px;color:var(--white);margin-bottom:24px;}
+h1.hero-title em{font-style:italic;color:var(--sky);display:block;}
+.hero-body{font-size:1rem;line-height:1.8;color:rgba(255,255,255,.6);max-width:480px;margin-bottom:36px;font-weight:300;}
+.hero-body strong{color:var(--ice);font-weight:600;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-blue{background:var(--blue);color:var(--white);padding:14px 30px;border-radius:6px;text-decoration:none;font-weight:700;font-size:.88rem;transition:all .2s;white-space:nowrap;}
+.btn-blue:hover{background:var(--bright);transform:translateY(-2px);box-shadow:0 12px 32px rgba(37,99,235,.4);}
+.btn-outline{border:1px solid rgba(96,165,250,.35);color:var(--sky);padding:14px 30px;border-radius:6px;text-decoration:none;font-weight:600;font-size:.88rem;transition:all .2s;white-space:nowrap;}
+.btn-outline:hover{background:rgba(96,165,250,.08);border-color:var(--sky);}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.hstat{background:rgba(255,255,255,.04);border:1px solid rgba(96,165,250,.15);border-radius:14px;padding:24px 20px;backdrop-filter:blur(8px);animation:rise .9s both;}
+.hstat:nth-child(2){animation-delay:.1s}.hstat:nth-child(3){animation-delay:.2s}.hstat:nth-child(4){animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.hstat-val{font-family:'Space Mono',monospace;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;color:var(--sky);line-height:1;margin-bottom:6px;}
+.hstat-label{font-size:.74rem;color:rgba(255,255,255,.45);line-height:1.5;font-weight:300;}
 
-body{
-overflow-x:hidden;
-}.hero-h1 .gold-word{color:var(--gold);display:block}
-.hero-h1 .outline-word{-webkit-text-stroke:1px var(--cream);color:transparent;display:block}
-.hero-statement{font-size:1.25rem;line-height:1.85;font-weight:300;color:rgba(242,234,216,.6);max-width:480px;margin-bottom:3rem;opacity:0;animation:up .9s .6s forwards}
-.hero-statement strong{color:var(--gold);font-weight:600}
-.hero-btns{display:flex;gap:1.2rem;align-items:center;opacity:0;animation:up .9s .8s forwards}
-.btn-fill{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:1rem 2.4rem;border:none;cursor:none;text-decoration:none;font-weight:500;transition:background .3s,transform .3s;display:inline-block}
-.btn-fill:hover{background:var(--gold-pale);transform:translateY(-3px)}
-.btn-border{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;background:transparent;color:var(--straw);padding:1rem 2.4rem;border:1px solid rgba(242,234,216,.3);cursor:none;text-decoration:none;transition:border-color .3s,color .3s;display:inline-block}
-.btn-border:hover{border-color:var(--gold);color:var(--gold)}
-.hero-right{position:relative;display:flex;align-items:center;justify-content:center;background:var(--forest);overflow:hidden;padding:9rem 0 6rem}
-.threads{position:absolute;inset:0;overflow:hidden}
-.thread{position:absolute;width:1.5px;background:linear-gradient(to bottom,transparent 0%,var(--gold) 50%,transparent 100%);animation:sway 5s ease-in-out infinite;transform-origin:top center}
-.hero-right-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:2rem;text-align:center;padding:2rem}
-.vs-box{position:relative;opacity:0;animation:up .9s 1s forwards}
-.vs-label{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--olive);margin-bottom:.8rem}
-.vs-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,12vw,10rem);line-height:1;color:var(--gold);text-shadow:0 0 80px rgba(201,168,76,.3)}
-.vs-unit{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:rgba(242,234,216,.5);margin-top:.3rem}
-.vs-divider{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.3em;color:var(--gold);opacity:.4}
-.hero-badge-spin{position:absolute;bottom:2.5rem;right:2.5rem;width:90px;height:90px}
-.hero-badge-spin svg{animation:spin 20s linear infinite}
+/* ── TICKER ── */
+.ticker-wrap{background:var(--blue);overflow:hidden;padding:12px 0;border-top:1px solid rgba(255,255,255,.1);}
+.ticker-track{display:flex;gap:48px;white-space:nowrap;animation:ticker 32s linear infinite;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.t-item{font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.85);display:inline-flex;align-items:center;gap:8px;}
+.t-dot{width:4px;height:4px;background:var(--ice);border-radius:50%;opacity:.5;}
 
-/* TICKER */
-.ticker{background:var(--gold);padding:.85rem 0;overflow:hidden}
-.ticker-track{display:flex;gap:0;width:max-content;animation:marquee 22s linear infinite}
-.ticker-item{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.2em;color:var(--ink);padding:0 2.5rem;flex-shrink:0;display:flex;align-items:center;gap:2.5rem}
-.ticker-item::after{content:'·';opacity:.4}
+/* ── SHARED ── */
+section{position:relative;z-index:1;}
+.section-inner{padding:80px 5vw;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.66rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sky);margin-bottom:16px;}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--sky);}
+h2.shead{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.4rem);font-weight:700;line-height:1.05;letter-spacing:-.5px;color:var(--white);margin-bottom:16px;}
+h2.shead em{font-style:italic;color:var(--sky);}
+.sdesc{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.5);max-width:560px;margin-bottom:48px;font-weight:300;}
 
-/* SECTION COMMONS */
-section{padding:8rem 4rem}
-.sec-tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
-.sec-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
-.sec-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,5vw,4.8rem);line-height:.95;color:var(--cream);letter-spacing:.03em}
-.sec-h .gold{color:var(--gold)}
-.sec-h .outline{-webkit-text-stroke:1px rgba(242,234,216,.4);color:transparent}
+/* ── FARM ── */
+#farm{background:var(--deep);}
+.farm-mosaic{display:grid;grid-template-columns:1.6fr 1fr 1fr;grid-template-rows:260px 200px;gap:10px;}
+.farm-cell{border-radius:12px;overflow:hidden;position:relative;}
+.farm-cell img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.6) brightness(.7);transition:filter .5s,transform .6s;}
+.farm-cell:hover img{filter:saturate(.85) brightness(.85);transform:scale(1.05);}
+.farm-cell.tall{grid-row:span 2;}
+.farm-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(5,13,31,.05) 30%,rgba(5,13,31,.75) 100%);}
+.farm-label{position:absolute;bottom:0;left:0;right:0;padding:16px;}
+.farm-tag{font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sky);margin-bottom:4px;}
+.farm-caption{font-size:.76rem;color:rgba(255,255,255,.78);line-height:1.4;}
+.farm-stat-cell{border-radius:12px;background:linear-gradient(135deg,var(--royal),var(--mid));display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;gap:14px;border:1px solid rgba(96,165,250,.2);}
+.farm-stat{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.farm-stat-num{font-family:'Space Mono',monospace;font-size:2rem;font-weight:700;color:var(--ice);line-height:1;}
+.farm-stat-desc{font-size:.7rem;color:rgba(255,255,255,.65);line-height:1.4;max-width:100px;}
+.farm-divider{width:24px;height:1px;background:rgba(96,165,250,.3);}
+.farm-quote-cell{border-radius:12px;background:rgba(37,99,235,.1);border:1px solid rgba(96,165,250,.15);display:flex;align-items:center;justify-content:center;padding:24px;}
 
-/* COTTON PROBLEM */
-.cotton-problem{background:var(--deep);position:relative;overflow:hidden}
-.cotton-problem::after{content:'COTTON';position:absolute;right:-2rem;top:50%;transform:translateY(-50%) rotate(90deg);font-family:'Bebas Neue',sans-serif;font-size:18rem;line-height:1;color:rgba(255,255,255,.02);pointer-events:none;white-space:nowrap}
-.problem-header{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:end;margin-bottom:6rem}
-.problem-intro p{font-size:1.12rem;line-height:1.9;color:rgba(242,234,216,.55);font-weight:300}
-.problem-intro p strong{color:var(--cream);font-weight:600}
-.cotton-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-bottom:4rem}
-.c-stat{background:var(--deep);padding:2.8rem 2rem;position:relative;overflow:hidden;transition:background .4s}
-.c-stat:hover{background:#18180F}
-.c-stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s}
-.c-stat:hover::before{transform:scaleX(1)}
-.c-n{font-family:'Bebas Neue',sans-serif;font-size:3.8rem;line-height:1;color:var(--gold);margin-bottom:.4rem}
-.c-n sup{font-size:1.5rem}
-.c-l{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,234,216,.4);margin-bottom:.7rem}
-.c-desc{font-size:.95rem;line-height:1.7;color:rgba(242,234,216,.35);font-weight:300}
-.comparison{background:#111108;border:1px solid var(--line);padding:3.5rem;position:relative;overflow:hidden}
-.comparison-title{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:2.5rem}
-.comp-row{display:grid;grid-template-columns:180px 1fr 80px;gap:1.5rem;align-items:center;margin-bottom:1.5rem}
-.comp-label{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--straw)}
-.comp-bar-wrap{height:8px;background:rgba(255,255,255,.05);position:relative}
-.comp-bar{height:100%;position:absolute;left:0;top:0;width:0;transition:width 1.5s ease}
-.comp-bar.cotton{background:rgba(200,80,60,.6)}
-.comp-bar.banana{background:var(--gold)}
-.comp-val{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.05em;text-align:right}
-.comp-val.red{color:rgba(200,80,60,.8)}
-.comp-val.green{color:var(--gold)}
+/* ── WHY ── */
+#why{background:var(--navy);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.why-card{background:rgba(255,255,255,.025);border:1px solid rgba(96,165,250,.09);padding:36px 28px;transition:all .3s;position:relative;overflow:hidden;}
+.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:0;transition:opacity .3s;}
+.why-card:hover{background:rgba(37,99,235,.07);border-color:rgba(96,165,250,.22);}
+.why-card:hover::before{opacity:1;}
+.why-icon{font-size:1.8rem;margin-bottom:16px;display:block;}
+.why-card h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--white);margin-bottom:10px;}
+.why-card p{font-size:.83rem;line-height:1.75;color:rgba(255,255,255,.45);font-weight:300;}
 
-/* VISION & MISSION */
-.vision-mission{background:var(--forest);padding:8rem 4rem;position:relative;overflow:hidden}
-.vision-mission::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border:1px solid rgba(201,168,76,.08);border-radius:50%}
-.vision-mission::after{content:'';position:absolute;bottom:-80px;left:-80px;width:320px;height:320px;border:1px solid rgba(201,168,76,.06);border-radius:50%}
-.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);position:relative;z-index:2}
-.vm-block{background:var(--forest);padding:5rem 4rem;position:relative;overflow:hidden;transition:background .4s}
-.vm-block:hover{background:#1E3518}
-.vm-tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
-.vm-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,5vw,5rem);line-height:.95;color:var(--cream);letter-spacing:.04em;margin-bottom:2rem}
-.vm-title .accent{color:var(--gold)}
-.vm-text{font-size:1.12rem;line-height:1.95;color:rgba(242,234,216,.6);font-weight:300;max-width:440px}
-.vm-text strong{color:var(--cream);font-weight:600}
-.vm-quote-block{background:var(--gold);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:space-between;grid-column:span 2}
-.vm-quote-block .big-q{font-family:'Bebas Neue',sans-serif;font-size:7rem;color:rgba(14,14,11,.15);line-height:1}
-.vm-quote-block blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-style:italic;color:var(--ink);line-height:1.55;font-weight:600}
-.vm-quote-block cite{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(14,14,11,.5);margin-top:1.5rem;display:block}
+/* ── CELLULOSE ── */
+#cellulose{background:linear-gradient(160deg,var(--mid) 0%,var(--deep) 60%,var(--navy) 100%);}
+.cellulose-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.c-steps{display:flex;flex-direction:column;}
+.c-step{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid rgba(96,165,250,.1);}
+.c-step:last-child{border-bottom:none;}
+.c-num{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--sky);font-weight:700;letter-spacing:2px;min-width:32px;padding-top:3px;}
+.c-step h4{font-size:.95rem;font-weight:600;color:var(--white);margin-bottom:6px;}
+.c-step p{font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.45);font-weight:300;}
+.c-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
+.cbadge{background:rgba(37,99,235,.2);border:1px solid rgba(96,165,250,.28);border-radius:4px;padding:6px 14px;font-size:.7rem;font-weight:600;color:var(--ice);letter-spacing:.5px;}
+.c-visual{background:rgba(255,255,255,.03);border:1px solid rgba(96,165,250,.12);border-radius:18px;padding:40px 32px;position:relative;overflow:hidden;}
+.c-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.25),transparent 70%);}
+.c-big-num{font-family:'Space Mono',monospace;font-size:clamp(3.5rem,6vw,5.5rem);font-weight:700;color:var(--blue);line-height:1;margin-bottom:6px;}
+.c-big-label{font-size:1rem;color:var(--ice);font-weight:600;margin-bottom:20px;}
+.c-big-sub{font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.7;font-weight:300;}
+.c-divider{width:40px;height:2px;background:var(--blue);margin:24px 0;}
+.c-mini-stats{display:flex;gap:32px;flex-wrap:wrap;}
+.c-mini{display:flex;flex-direction:column;gap:4px;}
+.c-mini-val{font-family:'Space Mono',monospace;font-size:1.5rem;color:var(--sky);font-weight:700;}
+.c-mini-desc{font-size:.7rem;color:rgba(255,255,255,.4);font-weight:300;}
 
-/* MANIFESTO */
-.manifesto{background:var(--ink);padding:10rem 4rem;text-align:center;position:relative;overflow:hidden}
-.manifesto::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(201,168,76,.06),transparent)}
-.manifesto-small{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:3rem;display:block;position:relative}
-.manifesto-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,10vw,10rem);line-height:.88;letter-spacing:.04em;position:relative;z-index:2}
-.manifesto-h .line1{color:var(--cream);display:block}
-.manifesto-h .line2{color:var(--gold);display:block;font-size:clamp(3rem,8vw,7.5rem)}
-.manifesto-h .line3{-webkit-text-stroke:1px rgba(242,234,216,.3);color:transparent;display:block;font-size:clamp(2.5rem,7vw,6.5rem)}
-.manifesto-body{max-width:700px;margin:4rem auto 0;font-size:1.2rem;line-height:1.95;color:rgba(242,234,216,.55);font-weight:300;position:relative}
-.manifesto-body strong{color:var(--cream);font-weight:600}
+/* ── PROCESS ── */
+#process{background:var(--deep);}
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin-bottom:32px;}
+.p-step{background:rgba(255,255,255,.03);border:1px solid rgba(96,165,250,.09);padding:32px 16px;text-align:center;transition:background .25s;position:relative;}
+.p-step::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:rgba(96,165,250,.22);font-size:.9rem;z-index:1;}
+.p-step:last-child::after{display:none;}
+.p-step:hover{background:rgba(37,99,235,.1);}
+.p-step-n{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--sky);letter-spacing:2px;margin-bottom:14px;}
+.p-step-icon{font-size:1.6rem;margin-bottom:12px;}
+.p-step h4{font-size:.84rem;font-weight:700;color:var(--white);margin-bottom:6px;}
+.p-step p{font-size:.72rem;color:rgba(255,255,255,.38);line-height:1.6;font-weight:300;}
+.process-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.ps-card{background:var(--royal);border-radius:12px;padding:28px 24px;border:1px solid rgba(96,165,250,.2);display:flex;align-items:center;gap:20px;}
+.ps-num{font-family:'Space Mono',monospace;font-size:2.4rem;font-weight:700;color:var(--ice);line-height:1;white-space:nowrap;}
+.ps-desc{font-size:.8rem;color:rgba(255,255,255,.72);line-height:1.5;}
 
-/* WHAT IS BANANA FIBRE */
-.what-section{background:var(--deep);padding:8rem 4rem}
-.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
-.what-left p{font-size:1.1rem;line-height:1.95;color:rgba(242,234,216,.55);font-weight:300;margin-bottom:1.4rem}
-.what-left p strong{color:var(--cream);font-weight:600}
-.fibre-uses{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
-.use-pill{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;border:1px solid var(--line);color:var(--straw);padding:.45rem 1rem;transition:border-color .3s,color .3s,background .3s}
-.use-pill:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.06)}
-.what-visual{background:var(--forest);padding:4rem;min-height:480px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.what-visual::after{content:'';position:absolute;bottom:-60px;right:-60px;width:240px;height:240px;border:1px solid rgba(201,168,76,.1);border-radius:50%}
-.plant-svg-wrap{display:flex;justify-content:center;align-items:center;flex:1}
-.what-specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:2rem}
-.what-spec{background:var(--forest);padding:1.4rem;transition:background .3s}
-.what-spec:hover{background:#1E3518}
-.ws-n{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold);line-height:1}
-.ws-l{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,234,216,.35);margin-top:.25rem;display:block}
+/* ── PRODUCTS ── */
+#products{background:var(--navy);}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.p-card{background:rgba(255,255,255,.03);border:1px solid rgba(96,165,250,.1);border-radius:14px;overflow:hidden;transition:all .3s;}
+.p-card:hover{background:rgba(37,99,235,.08);border-color:rgba(96,165,250,.32);transform:translateY(-4px);box-shadow:0 20px 48px rgba(5,13,31,.7);}
+.p-card-top{padding:32px 28px 26px;background:rgba(37,99,235,.07);border-bottom:1px solid rgba(96,165,250,.08);}
+.p-card-emoji{font-size:2.2rem;margin-bottom:12px;display:block;}
+.p-card-range{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sky);margin-bottom:4px;}
+.p-card-top h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--white);}
+.p-card-body{padding:20px 28px 28px;}
+.p-card-body p{font-size:.82rem;line-height:1.75;color:rgba(255,255,255,.45);font-weight:300;margin-bottom:16px;}
+.p-link{font-size:.72rem;font-weight:700;color:var(--sky);text-decoration:none;display:inline-flex;align-items:center;gap:5px;letter-spacing:.5px;text-transform:uppercase;}
+.p-link::after{content:'→';transition:transform .2s;}
+.p-link:hover::after{transform:translateX(4px);}
 
-/* PROCESS COMPACT */
-.process-compact{background:var(--ink);padding:8rem 4rem}
-.process-header{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:end;margin-bottom:5rem}
-.process-header p{font-size:1.1rem;line-height:1.85;color:rgba(242,234,216,.5);font-weight:300}
-.p-steps-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
-.p-steps-row::before{content:'';position:absolute;top:22px;left:5%;right:5%;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);opacity:.25}
-.p-step-c{padding:0 1.5rem;text-align:center;position:relative;transition:transform .3s}
-.p-step-c:hover{transform:translateY(-6px)}
-.p-dot{width:44px;height:44px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.2rem;background:var(--ink);position:relative;z-index:1;transition:background .3s}
-.p-step-c:hover .p-dot{background:var(--gold)}
-.p-step-title{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
-.p-step-desc{font-size:.9rem;line-height:1.7;color:rgba(242,234,216,.4);font-weight:300}
+/* ── MEDICAL ── */
+#medical{background:var(--deep);}
+.medical-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
+.med-card{background:rgba(255,255,255,.03);border:1px solid rgba(96,165,250,.1);border-radius:12px;padding:24px 20px;transition:all .25s;}
+.med-card:hover{background:rgba(37,99,235,.1);border-color:rgba(96,165,250,.28);}
+.med-icon{font-size:1.6rem;margin-bottom:14px;}
+.med-card h4{font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:8px;}
+.med-card p{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.65;font-weight:300;}
+.med-strip{background:linear-gradient(90deg,var(--royal),var(--blue));border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border:1px solid rgba(96,165,250,.2);}
+.med-strip p{color:rgba(255,255,255,.88);font-weight:500;font-size:.88rem;max-width:520px;line-height:1.6;}
+.med-strip a{background:rgba(255,255,255,.14);color:var(--white);padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:700;font-size:.78rem;white-space:nowrap;border:1px solid rgba(255,255,255,.18);transition:background .2s;}
+.med-strip a:hover{background:rgba(255,255,255,.24);}
 
-/* PRODUCTS */
-.products-strip{background:var(--deep);padding:8rem 4rem}
-.products-header{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:end;margin-bottom:4rem}
-.products-header p{font-size:1.1rem;line-height:1.85;color:rgba(242,234,216,.5);font-weight:300}
-.p-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
-.p-item{background:var(--deep);padding:2.5rem;position:relative;overflow:hidden;transition:background .4s}
-.p-item:hover{background:#14140E}
-.p-item::before{content:'';position:absolute;top:0;left:0;width:2px;bottom:0;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .4s}
-.p-item:hover::before{transform:scaleY(1)}
-.p-item-icon{font-size:2rem;margin-bottom:1.2rem;display:block}
-.p-item-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.06em;color:var(--cream);margin-bottom:.4rem}
-.p-item-sub{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;opacity:.8}
-.p-item-desc{font-size:.95rem;line-height:1.7;color:rgba(242,234,216,.4);font-weight:300;margin-bottom:1.2rem}
-.p-item-link{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:letter-spacing .3s}
-.p-item-link:hover{letter-spacing:.25em}
+/* ── IMPACT ── */
+#impact{background:linear-gradient(160deg,var(--royal) 0%,var(--mid) 100%);}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.imp-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:32px 20px;text-align:center;transition:all .2s;}
+.imp-card:hover{background:rgba(255,255,255,.12);transform:scale(1.03);}
+.imp-num{font-family:'Space Mono',monospace;font-size:clamp(1.6rem,2.5vw,2.6rem);font-weight:700;color:var(--white);line-height:1;margin-bottom:8px;}
+.imp-label{font-size:.76rem;color:rgba(255,255,255,.68);font-weight:400;line-height:1.5;}
 
-/* IMPACT ROW */
-.impact-row{background:var(--gold);padding:5rem 4rem}
-.impact-row-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(14,14,11,.1)}
-.ir-item{background:var(--gold);padding:2.5rem 2rem;text-align:center;transition:background .3s}
-.ir-item:hover{background:var(--gold-pale)}
-.ir-n{font-family:'Bebas Neue',sans-serif;font-size:3.8rem;line-height:1;color:var(--ink);margin-bottom:.3rem}
-.ir-l{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(14,14,11,.55)}
+/* ── VISION ── */
+#vision{background:var(--navy);}
+.vision-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.vision-quote-block{border-left:2px solid var(--blue);padding-left:32px;}
+.vision-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2vw,1.9rem);font-weight:600;font-style:italic;color:var(--white);line-height:1.55;margin-bottom:16px;}
+.vision-attr{font-size:.76rem;color:rgba(255,255,255,.35);font-weight:400;}
+.vision-right p{font-size:.9rem;line-height:1.85;color:rgba(255,255,255,.55);font-weight:300;margin-bottom:16px;}
+.vision-right strong{color:var(--ice);font-weight:600;}
 
-/* THE SHIFT */
-.shift{background:var(--deep);padding:10rem 4rem;position:relative;overflow:hidden}
-.shift::before{content:'SHIFT';position:absolute;left:-2rem;top:50%;transform:translateY(-50%) rotate(-90deg);font-family:'Bebas Neue',sans-serif;font-size:22rem;color:rgba(255,255,255,.018);pointer-events:none;white-space:nowrap}
-.shift-content{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:2}
-.shift-eyebrow{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem;display:block}
-.shift-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,8vw,7.5rem);line-height:.9;letter-spacing:.04em;color:var(--cream);margin-bottom:3rem}
-.shift-h .break{display:block}
-.shift-h .outline{-webkit-text-stroke:1px rgba(242,234,216,.3);color:transparent}
-.shift-body{font-size:1.2rem;line-height:1.95;color:rgba(242,234,216,.55);font-weight:300;max-width:680px;margin:0 auto 4rem}
-.shift-body strong{color:var(--cream);font-weight:600}
-.shift-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:5rem;text-align:left}
-.s-pillar{background:var(--deep);padding:3rem 2.5rem;transition:background .4s}
-.s-pillar:hover{background:#141410}
-.s-pillar-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:rgba(201,168,76,.2);line-height:1;margin-bottom:1rem;transition:color .4s}
-.s-pillar:hover .s-pillar-num{color:var(--gold)}
-.s-pillar-title{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
-.s-pillar-text{font-size:1rem;line-height:1.75;color:rgba(242,234,216,.5);font-weight:300}
+/* ── FORM ── */
+#samples{background:var(--deep);}
+.form-wrap{background:rgba(255,255,255,.04);border:1px solid rgba(96,165,250,.14);border-radius:18px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.fg{display:flex;flex-direction:column;gap:7px;}
+.fg.full{grid-column:1/-1;}
+.fg label{font-size:.66rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sky);}
+.fg input,.fg textarea{background:rgba(255,255,255,.05);border:1px solid rgba(96,165,250,.18);border-radius:8px;padding:13px 15px;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--white);outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.22);}
+.fg input:focus,.fg textarea:focus{border-color:var(--blue);background:rgba(37,99,235,.07);}
+.fg textarea{resize:vertical;min-height:90px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.chip{background:rgba(255,255,255,.04);border:1px solid rgba(96,165,250,.18);border-radius:6px;padding:8px 16px;font-size:.74rem;font-weight:600;color:rgba(255,255,255,.55);cursor:pointer;transition:all .15s;user-select:none;}
+.chip.active,.chip:hover{background:var(--blue);border-color:var(--blue);color:var(--white);}
+.form-submit{grid-column:1/-1;text-align:center;margin-top:6px;}
+.form-submit button{background:linear-gradient(90deg,var(--blue),var(--bright));color:var(--white);border:none;border-radius:8px;padding:15px 56px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;width:100%;max-width:360px;}
+.form-submit button:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(37,99,235,.5);}
+.form-assures{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:4px;}
+.assure{font-size:.72rem;color:rgba(255,255,255,.38);display:flex;align-items:center;gap:5px;}
+.assure::before{content:'✓';color:var(--sky);font-weight:800;}
 
-/* CTA */
-.cta-block{background:var(--forest);padding:8rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;position:relative;overflow:hidden}
-.cta-block::after{content:'';position:absolute;right:-100px;top:-100px;width:400px;height:400px;border:1px solid rgba(201,168,76,.08);border-radius:50%}
-.cta-left h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,6rem);line-height:.9;letter-spacing:.04em;color:var(--cream);margin-bottom:1.5rem}
-.cta-left h2 span{color:var(--gold)}
-.cta-left p{font-size:1.1rem;line-height:1.85;color:rgba(242,234,216,.55);font-weight:300}
-.cta-perks{margin-top:2.5rem;display:flex;flex-direction:column;gap:1rem}
-.cta-perk{display:flex;gap:.8rem;align-items:center;color:rgba(242,234,216,.4);font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.15em}
-.cta-perk span{color:var(--gold)}
-.cta-form{display:flex;flex-direction:column;gap:1rem}
-.c-input{font-family:'Cormorant Garamond',serif;font-size:1rem;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--cream);padding:.9rem 1.3rem;outline:none;transition:border-color .3s;width:100%}
-.c-input::placeholder{color:rgba(242,234,216,.25)}
-.c-input:focus{border-color:var(--gold)}
-.c-select{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--straw);padding:.9rem 1.3rem;outline:none;cursor:none;width:100%;appearance:none}
-.c-select option{background:var(--forest)}
-.c-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.btn-submit-full{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:1.1rem;border:none;cursor:none;font-weight:500;transition:background .3s,transform .3s;margin-top:.4rem}
-.btn-submit-full:hover{background:var(--gold-pale);transform:translateY(-2px)}
+/* ── FOOTER ── */
+footer{background:var(--navy);border-top:1px solid rgba(96,165,250,.1);padding:64px 5vw 36px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+.f-brand-logo{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;font-style:italic;color:var(--white);margin-bottom:14px;}
+.f-brand-logo span{color:var(--sky);}
+.f-brand p{font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.75;max-width:240px;font-weight:300;}
+.f-col h5{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sky);margin-bottom:18px;}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.f-col a{color:rgba(255,255,255,.38);text-decoration:none;font-size:.82rem;transition:color .2s;font-weight:300;}
+.f-col a:hover{color:var(--ice);}
+.footer-bottom{border-top:1px solid rgba(96,165,250,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-bottom p{font-size:.74rem;color:rgba(255,255,255,.28);}
+.socials{display:flex;gap:8px;}
+.soc{width:34px;height:34px;border-radius:7px;background:rgba(255,255,255,.05);border:1px solid rgba(96,165,250,.14);display:flex;align-items:center;justify-content:center;font-size:.72rem;color:rgba(255,255,255,.45);text-decoration:none;transition:all .2s;}
+.soc:hover{background:var(--blue);border-color:var(--blue);color:var(--white);}
 
-/* FOOTER */
-footer{background:#080807;padding:5rem 4rem 2.5rem;border-top:1px solid var(--line)}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid var(--line)}
-.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.2em;color:var(--cream);text-decoration:none;display:block;margin-bottom:1rem}
-.footer-logo span{color:var(--gold)}
-.footer-brand p{font-size:.95rem;line-height:1.85;color:rgba(242,234,216,.3);font-weight:300;margin-bottom:1.5rem}
-.footer-socials{display:flex;gap:.8rem}
-.soc{width:34px;height:34px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);text-decoration:none;font-family:'DM Mono',monospace;font-size:.58rem;transition:background .3s,border-color .3s}
-.soc:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
-.footer-col h4{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
-.footer-col ul a{font-size:.92rem;color:rgba(242,234,216,.3);text-decoration:none;transition:color .3s}
-.footer-col ul a:hover{color:var(--straw)}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center}
-.footer-bottom p,.footer-bottom a{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.14em;color:rgba(242,234,216,.18)}
-.footer-bottom a{text-decoration:none;transition:color .3s}
-.footer-bottom a:hover{color:var(--gold)}
+/* ═══════════════════════════
+   RESPONSIVE
+═══════════════════════════ */
 
-/* ANIMATIONS */
-@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes marquee{to{transform:translateX(-50%)}}
-@keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .85s ease,transform .85s ease}
-.reveal.vis{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
-  @media (max-width: 768px) {
-  .hero {
-    display: block; /* stack left & right vertically */
-    min-height: auto; /* grow with content */
-    padding: 2rem; /* optional space around */
-    overflow: visible; /* show all content */
-  }
-
-  .hero-left, .hero-right {
-    padding: 2rem 0; /* spacing inside columns */
-  }
-}
-  @media (max-width: 768px) {
-  .hero-h1 {
-    font-size: clamp(2rem, 6vw, 4rem); /* smaller for mobile */
-    line-height: 1.1;
-  }
-
-  .hero-statement {
-    font-size: 1rem;
-    max-width: 100%; /* use full width */
-  }
-
-  .hero-btns {
-    flex-direction: column; /* buttons stack */
-    gap: 1rem;
-  }
-
-  .hero-badge-spin {
-    width: 60px;
-    height: 60px;
-    bottom: 1rem;
-    right: 1rem;
-  }
-}
-  @media (max-width: 768px) {
-  .hero {
-    background-color: var(--deep) !important; /* force color */
-    display: block;
-    min-height: auto;
-    padding: 2rem;
-    overflow: visible;
-  }
-
-  .hero-left, .hero-right {
-    padding: 2rem 0;
-  }
-}
-  @media (max-width: 768px) {
-  .hero-right {
-    position: relative; /* already there */
-    overflow: visible; /* show any hidden threads */
-    min-height: auto;
-  }
-
-  .threads {
-    position: relative; /* stack below hero content */
-    width: 100%;
-    height: auto;
-  }
-}
-  /* MOBILE / TABLET RESPONSIVE HERO */
-@media (max-width: 1024px) {
-  .hero {
-    display: block;
-    min-height: auto;
-    padding: 4rem 2rem;
-    overflow: visible;
-  }
-
-  .hero-left, .hero-right {
-    padding: 2rem 0;
-    border: none;
-  }
-
-  .hero-left {
-    text-align: center;
-  }
-
-  .hero-right {
-    background-color: var(--forest) !important;
-  }
-
-  .hero-right-content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1rem 2rem;
-  }
-
-  .threads {
-    position: relative;
-    width: 100%;
-    height: auto;
-  }
-
-  .hero-btns {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .hero-h1 {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    line-height: 1.1;
-  }
-
-  .hero-statement {
-    font-size: 1rem;
-    line-height: 1.6;
-    max-width: 100%;
-  }
-
-  .vs-num {
-    font-size: clamp(3rem, 10vw, 5rem);
-  }
-
-  .vs-unit {
-    font-size: 0.9rem;
-  }
-}
-   /* Mobile overflow fix for all sections */
-    @media (max-width:1024px) {
-      .hero-right,
-      .threads,
-      .cotton-problem,
-      .c-stat,
-      .comparison,
-      .vision-mission,
-      .vm-block,
-      .manifesto,
-      .p-item {
-        overflow: visible !important; /* allow content to expand */
-        padding: 4rem 2rem !important; /* reduce padding on mobile */
-      }
-
-      .hero {
-        display: block !important; /* stack left & right columns */
-        min-height: auto !important;
-      }
-
-      .hero-left, 
-      .hero-right {
-        width: 100% !important;
-      }
-    }
-  /* MOBILE OVERFLOW FIX */
-@media (max-width:1024px) {
-  body,
-  .hero,
-  .hero-left,
-  .hero-right,
-  .threads,
-  .cotton-problem,
-  .c-stat,
-  .comparison,
-  .vision-mission,
-  .vm-block,
-  .manifesto,
-  .p-item {
-    overflow: visible !important; /* show all hidden content */
-  }
-
-  .hero {
-    display: block !important;  /* stack left & right */
-    min-height: auto !important;
-    padding: 2rem 1.5rem !important;
-  }
-
-  .hero-left,
-  .hero-right {
-    width: 100% !important;
-    padding: 2rem 0 !important;
-  }
-
-  .threads {
-    position: relative !important;
-    width: 100% !important;
-    height: auto !important;
-  }
-}
-  .hero {
-  background: #0d0f0b;   /* one unified color */
+/* Tablet — ≤1100px */
+@media(max-width:1100px){
+  .nav-links{gap:18px;}
+  .nav-links a{font-size:.72rem;}
+  .farm-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:220px 180px;}
+  .farm-cell.tall{grid-row:span 2;}
+  .cellulose-layout{gap:48px;}
+  .product-grid{grid-template-columns:repeat(2,1fr);}
+  .medical-grid{grid-template-columns:repeat(2,1fr);}
+  .impact-grid{grid-template-columns:repeat(4,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
 }
 
-.hero .left,
-.hero .right {
-  background: transparent;
-}
-  @media (max-width: 768px) {
-
-.hero{
-  display:block;
-  padding:40px 20px;
-}
-
-.hero .left,
-.hero .right{
-  width:100%;
+/* Small tablet — ≤900px */
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .cellulose-layout{grid-template-columns:1fr;}
+  .vision-layout{grid-template-columns:1fr;gap:40px;}
+  .process-steps{grid-template-columns:repeat(3,1fr);}
+  .p-step::after{display:none;}
+  .process-stats{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr 1fr;}
 }
 
-}
-  @media (max-width:768px){
+/* Mobile — ≤640px */
+@media(max-width:640px){
+  .section-inner{padding:60px 4vw;}
+  h1.hero-title{font-size:clamp(2.6rem,10vw,3.4rem);}
+  .hero-stats{grid-template-columns:1fr 1fr;gap:8px;}
+  .hstat{padding:18px 14px;}
+  .hstat-val{font-size:1.7rem;}
+  .hstat-label{font-size:.68rem;}
+  .hero-actions{flex-direction:column;}
+  .btn-blue,.btn-outline{text-align:center;padding:14px 20px;}
 
-.hero{
-display:block;
-}
+  /* Farm — single col on mobile */
+  .farm-mosaic{grid-template-columns:1fr;grid-template-rows:auto;}
+  .farm-cell{height:200px;}
+  .farm-cell.tall{grid-row:span 1;height:240px;}
+  .farm-stat-cell{flex-direction:row;padding:20px;gap:20px;}
+  .farm-stat-num{font-size:1.6rem;}
+  .farm-quote-cell{padding:20px;}
 
-.hero-right{
-display:none;
-}
-    @media (max-width:768px){
+  .why-grid{grid-template-columns:1fr;}
+  .process-steps{grid-template-columns:1fr 1fr;}
+  .product-grid{grid-template-columns:1fr;}
+  .medical-grid{grid-template-columns:1fr;}
+  .impact-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .imp-card{padding:22px 14px;}
+  .imp-num{font-size:1.7rem;}
 
-#nav{
-flex-direction:column;
-align-items:center;
-gap:12px;
-padding:20px 10px;
-}
+  /* Form — single col */
+  .form-wrap{grid-template-columns:1fr;padding:28px 20px;gap:16px;}
+  .fg.full{grid-column:1;}
+  .form-submit{grid-column:1;}
+  .form-assures{grid-column:1;flex-direction:column;align-items:flex-start;gap:10px;}
+  .form-submit button{width:100%;max-width:100%;padding:16px;}
 
-#nav a{
-font-size:12px;
-letter-spacing:1px;
-}
+  /* Process */
+  .p-step{padding:22px 12px;}
+  .p-step-icon{font-size:1.4rem;}
+  .p-step h4{font-size:.8rem;}
+  .p-step p{display:none;}/* hide detail on very small screens */
 
-}
-    @media (max-width:768px){
+  .ps-card{padding:20px 18px;}
+  .ps-num{font-size:1.8rem;}
 
-body{
-overflow-x:hidden;
-}
+  /* Footer */
+  .footer-grid{grid-template-columns:1fr;gap:28px;}
+  .f-brand p{max-width:100%;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:16px;}
 
-#nav{
-flex-direction:column;
-align-items:center;
-gap:10px;
-}
+  /* Med strip */
+  .med-strip{flex-direction:column;align-items:flex-start;}
+  .med-strip a{width:100%;text-align:center;}
 
-#nav a{
-font-size:12px;
-}
-
-.hero{
-display:block;
-}
-
-.hero-right{
-display:none;
-}
-
-.hero-left{
-width:100%;
-padding:40px 20px;
-}
-
-.hero-h1{
-font-size:clamp(2.8rem,8vw,7rem);
+  /* Cellulose */
+  .c-mini-stats{flex-direction:row;flex-wrap:wrap;gap:20px;}
 }
 
+/* Very small — ≤380px */
+@media(max-width:380px){
+  .hero-stats{grid-template-columns:1fr;}
+  .impact-grid{grid-template-columns:1fr;}
+  h1.hero-title{font-size:2.4rem;}
+  .chips{gap:6px;}
+  .chip{padding:7px 12px;font-size:.68rem;}
 }
 </style>
 </head>
 <body>
-<div class="cur" id="c"></div>
-<div class="cur-r" id="cr"></div>
 
 <!-- NAV -->
-<nav id="nav">
-  <a href="#" class="logo">Male<span>ema</span></a>
+<nav>
+  <div class="nav-logo">Male<span>ema</span></div>
   <ul class="nav-links">
-    <li><a href="#problem">The Problem</a></li>
-    <li><a href="#vision">Vision & Mission</a></li>
+    <li><a href="#farm">Our Farms</a></li>
+    <li><a href="#why">Why Banana</a></li>
+    <li><a href="#cellulose">Cellulose</a></li>
     <li><a href="#products">Products</a></li>
-    <li><a href="#shift">The Shift</a></li>
-    <li><a href="#order" class="nav-cta">Get Samples</a></li>
-    <li><a href="products.html">Products</a></li>
+    <li><a href="#medical">Medical</a></li>
+    <li><a href="#impact">Impact</a></li>
   </ul>
+  <a href="#samples" class="nav-cta">Get Samples →</a>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
+<!-- MOBILE MENU -->
+<ul class="mobile-menu" id="mobileMenu">
+  <li><a href="#farm" class="mob-link">Our Farms</a></li>
+  <li><a href="#why" class="mob-link">Why Banana Fibre</a></li>
+  <li><a href="#cellulose" class="mob-link">Cellulose Process</a></li>
+  <li><a href="#products" class="mob-link">Products</a></li>
+  <li><a href="#medical" class="mob-link">Medical Textiles</a></li>
+  <li><a href="#impact" class="mob-link">Impact</a></li>
+  <li><a href="#vision" class="mob-link">Vision</a></li>
+  <a href="#samples" class="mob-cta mob-link">Get Samples →</a>
+</ul>
+
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-tag">India's Banana Fibre Textile Brand</div>
-    <h1 class="hero-h1">
-      The End
-      <span class="gold-word">Of Cotton</span>
-      <span class="outline-word">Dependence</span>
-    </h1>
-    <p class="hero-statement">
-      <strong>Maleema transforms banana crop waste into premium yarn, cello sheets, and fabric</strong> — the biggest natural alternative to cotton, made without a single extra litre of water, for a fashion industry that can no longer afford the cost of the old way.
-    </p>
-    <div class="hero-btns">
-      <a href="#products" class="btn-fill">Explore Products</a>
-      <a href="#problem" class="btn-border">See The Problem</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="threads" id="threads"></div>
-    <div class="hero-right-content">
-      <div class="vs-box">
-        <div class="vs-label">Water to make 1 cotton T-shirt</div>
-        <div class="vs-num">2,700</div>
-        <div class="vs-unit">litres of fresh water</div>
-      </div>
-      <div class="vs-divider">— VS —</div>
-      <div class="vs-box" style="animation-delay:1.2s">
-        <div class="vs-label">Extra water for banana fibre yarn</div>
-        <div class="vs-num" style="color:var(--straw)">~0</div>
-        <div class="vs-unit" style="color:rgba(242,234,216,.35)">No additional irrigation needed</div>
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-img"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">India's Banana Fibre Pioneer</div>
+      <h1 class="hero-title">The Fibre<br/><em>Revolution</em><br/>Starts Here.</h1>
+      <p class="hero-body">Maleema transforms banana crop waste into <strong>premium cellulose sheets, yarn, and fabric</strong> — giving the world a stronger, smarter, more beautiful natural fibre. No extra water. No extra land. No compromise.</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-blue">Explore Products</a>
+        <a href="#cellulose" class="btn-outline">Our Cellulose Process</a>
       </div>
     </div>
-    <div class="hero-badge-spin">
-      <svg viewBox="0 0 90 90" width="90" height="90">
-        <defs><path id="ct" d="M45,45 m-35,0 a35,35,0,1,1,70,0 a35,35,0,1,1,-70,0"/></defs>
-        <text font-family="DM Mono,monospace" font-size="7.5" fill="#C9A84C" letter-spacing="2.2">
-          <textPath href="#ct">MALEEMA · BANANA FIBRE · MADE IN INDIA · </textPath>
-        </text>
-        <circle cx="45" cy="45" r="3.5" fill="#C9A84C"/>
-      </svg>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-val">~0 L</div><div class="hstat-label">Extra water per kg of banana fibre yarn</div></div>
+      <div class="hstat"><div class="hstat-val">90%</div><div class="hstat-label">Less CO₂ vs conventional alternatives</div></div>
+      <div class="hstat"><div class="hstat-val">12+</div><div class="hstat-label">Fibre grades from a single banana stem</div></div>
+      <div class="hstat"><div class="hstat-val">100%</div><div class="hstat-label">Sourced from agricultural crop waste</div></div>
     </div>
   </div>
 </section>
 
 <!-- TICKER -->
-<div class="ticker">
+<div class="ticker-wrap">
   <div class="ticker-track">
-    <div class="ticker-item">Banana Fibre Yarn</div>
-    <div class="ticker-item">Zero Extra Water</div>
-    <div class="ticker-item">90% Less CO₂</div>
-    <div class="ticker-item">The Cotton Alternative</div>
-    <div class="ticker-item">Yarn · Cello · Fabric · Rope</div>
-    <div class="ticker-item">Agricultural Waste → Premium Textile</div>
-    <div class="ticker-item">India Made · World Ready</div>
-    <div class="ticker-item">Banana Fibre Yarn</div>
-    <div class="ticker-item">Zero Extra Water</div>
-    <div class="ticker-item">90% Less CO₂</div>
-    <div class="ticker-item">The Cotton Alternative</div>
-    <div class="ticker-item">Yarn · Cello · Fabric · Rope</div>
-    <div class="ticker-item">Agricultural Waste → Premium Textile</div>
-    <div class="ticker-item">India Made · World Ready</div>
+    <span class="t-item"><span class="t-dot"></span>Banana Fibre Yarn</span>
+    <span class="t-item"><span class="t-dot"></span>Cellulose Sheets</span>
+    <span class="t-item"><span class="t-dot"></span>Medical Textiles</span>
+    <span class="t-item"><span class="t-dot"></span>Home Textiles</span>
+    <span class="t-item"><span class="t-dot"></span>Fashion &amp; Clothing</span>
+    <span class="t-item"><span class="t-dot"></span>Knit Textiles</span>
+    <span class="t-item"><span class="t-dot"></span>9% Water Reduction</span>
+    <span class="t-item"><span class="t-dot"></span>100% Biodegradable</span>
+    <span class="t-item"><span class="t-dot"></span>Made In India</span>
+    <span class="t-item"><span class="t-dot"></span>Farmer First</span>
+    <span class="t-item"><span class="t-dot"></span>Banana Fibre Yarn</span>
+    <span class="t-item"><span class="t-dot"></span>Cellulose Sheets</span>
+    <span class="t-item"><span class="t-dot"></span>Medical Textiles</span>
+    <span class="t-item"><span class="t-dot"></span>Home Textiles</span>
+    <span class="t-item"><span class="t-dot"></span>Fashion &amp; Clothing</span>
+    <span class="t-item"><span class="t-dot"></span>Knit Textiles</span>
+    <span class="t-item"><span class="t-dot"></span>9% Water Reduction</span>
+    <span class="t-item"><span class="t-dot"></span>100% Biodegradable</span>
+    <span class="t-item"><span class="t-dot"></span>Made In India</span>
+    <span class="t-item"><span class="t-dot"></span>Farmer First</span>
   </div>
 </div>
 
-<!-- COTTON PROBLEM -->
-<section class="cotton-problem" id="problem">
-  <div class="problem-header">
-    <div class="reveal">
-      <div class="sec-tag">The Problem With Cotton</div>
-      <h2 class="sec-h">Cotton Is<br><span class="gold">Draining</span><br><span class="outline">The Planet</span></h2>
+<!-- FARM -->
+<section id="farm"><div class="section-inner">
+  <div class="eyebrow">From the Field</div>
+  <h2 class="shead">Where Every<br/><em>Fibre Begins</em></h2>
+  <p class="sdesc">In banana fields across India, smallholder farmers grow the fruit — and Maleema rescues everything left behind. The stem that was once burned in the field is now a premium global fibre.</p>
+  <div class="farm-mosaic">
+    <div class="farm-cell tall">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Banana_plantation_in_Martinique.jpg/1280px-Banana_plantation_in_Martinique.jpg" alt="Banana plantation"/>
+      <div class="farm-overlay"></div>
+      <div class="farm-label"><div class="farm-tag">The Plantation</div><div class="farm-caption">Lush banana fields across south India — each harvest yields both the fruit and our raw material.</div></div>
     </div>
-    <div class="problem-intro reveal d2">
-      <p>Cotton covers <strong>just 3% of the world's farmland</strong> — yet consumes <strong>10% of all agricultural chemicals</strong> and <strong>25% of all insecticides</strong> globally. It dominates 40% of all textile production while drying up rivers, depleting groundwater, and poisoning the land around every factory that touches it.</p>
-      <p style="margin-top:1.2rem">The fashion industry has known this for decades. And kept going anyway — because there was no viable alternative at scale. <strong>Until now. The answer was always in the banana field.</strong></p>
+    <div class="farm-cell">
+      <img src="https://images.unsplash.com/photo-1591367003117-1f5adf5bd8dd?w=800&q=80" alt="Banana plant stem"/>
+      <div class="farm-overlay"></div>
+      <div class="farm-label"><div class="farm-tag">The Pseudostem</div><div class="farm-caption">The stem holds long cellulosic fibres — discarded after harvest, rescued by Maleema.</div></div>
     </div>
-  </div>
-
-  <div class="cotton-stats reveal">
-    <div class="c-stat">
-      <div class="c-n">10K<sup>+</sup></div>
-      <div class="c-l">Litres per kg of cotton</div>
-      <p class="c-desc">To grow 1 kg of cotton lint — enough water for one person to drink for 10 years.</p>
+    <div class="farm-stat-cell">
+      <div class="farm-stat"><div class="farm-stat-num">30%</div><div class="farm-stat-desc">More seasonal income for farming families</div></div>
+      <div class="farm-divider"></div>
+      <div class="farm-stat"><div class="farm-stat-num">60%</div><div class="farm-stat-desc">Of our processing team are women</div></div>
     </div>
-    <div class="c-stat">
-      <div class="c-n">40%</div>
-      <div class="c-l">Of global textiles</div>
-      <p class="c-desc">Cotton's stranglehold on fashion. Nearly half of all textiles on earth depend on this single, water-hungry crop.</p>
+    <div class="farm-cell">
+      <img src="https://images.unsplash.com/photo-1542223616-9de9adb5e3e8?w=800&q=80" alt="Farmer at work"/>
+      <div class="farm-overlay"></div>
+      <div class="farm-label"><div class="farm-tag">Farmer Partners</div><div class="farm-caption">Smallholder families earn from waste they once burned.</div></div>
     </div>
-    <div class="c-stat">
-      <div class="c-n">25%</div>
-      <div class="c-l">Of all insecticides used</div>
-      <p class="c-desc">Despite covering 3% of farmland, cotton consumes a quarter of every insecticide manufactured globally.</p>
-    </div>
-    <div class="c-stat">
-      <div class="c-n">80%</div>
-      <div class="c-l">Hidden water footprint</div>
-      <p class="c-desc">Europe's cotton consumption depletes water invisibly — in India, Pakistan, and Uzbekistan, not in the shop where it's sold.</p>
-    </div>
-  </div>
-
-  <div class="comparison reveal" id="compSection">
-    <div class="comparison-title">Head to Head — Cotton vs Banana Fibre</div>
-    <div class="comp-row">
-      <div class="comp-label">Cotton — Water use</div>
-      <div class="comp-bar-wrap"><div class="comp-bar cotton" data-w="92%"></div></div>
-      <div class="comp-val red">10,000 L/kg</div>
-    </div>
-    <div class="comp-row">
-      <div class="comp-label">Banana Fibre — Water use</div>
-      <div class="comp-bar-wrap"><div class="comp-bar banana" data-w="4%"></div></div>
-      <div class="comp-val green">~0 L/kg</div>
-    </div>
-    <div style="height:.8rem"></div>
-    <div class="comp-row">
-      <div class="comp-label">Cotton — CO₂ Emissions</div>
-      <div class="comp-bar-wrap"><div class="comp-bar cotton" data-w="88%"></div></div>
-      <div class="comp-val red">High Impact</div>
-    </div>
-    <div class="comp-row">
-      <div class="comp-label">Banana Fibre — CO₂</div>
-      <div class="comp-bar-wrap"><div class="comp-bar banana" data-w="9%"></div></div>
-      <div class="comp-val green">−90% Less</div>
-    </div>
-    <div style="height:.8rem"></div>
-    <div class="comp-row">
-      <div class="comp-label">Cotton — Biodegradability</div>
-      <div class="comp-bar-wrap"><div class="comp-bar cotton" data-w="40%"></div></div>
-      <div class="comp-val red">Partial</div>
-    </div>
-    <div class="comp-row">
-      <div class="comp-label">Banana Fibre — Biodegradability</div>
-      <div class="comp-bar-wrap"><div class="comp-bar banana" data-w="100%"></div></div>
-      <div class="comp-val green">100%</div>
-    </div>
-  </div>
-</section>
-
-<!-- VISION & MISSION -->
-<section class="vision-mission" id="vision">
-  <div class="vm-grid">
-    <div class="vm-block reveal">
-      <span class="vm-tag">Our Vision</span>
-      <h2 class="vm-title">A World Where<br><span class="accent">Waste</span> Weaves</h2>
-      <p class="vm-text">We envision a global textile industry where <strong>agricultural by-products replace virgin crops</strong> as the primary source of natural fibre. A world where every banana harvested also yields premium material — and no stem is ever burned or wasted again.<br><br>We see Maleema as the pioneer that proves circular fibre is not a niche. <strong>It is the future of every fabric.</strong></p>
-    </div>
-    <div class="vm-block reveal d2">
-      <span class="vm-tag">Our Mission</span>
-      <h2 class="vm-title">Convert<br><span class="accent">Waste</span> To Wealth</h2>
-      <p class="vm-text">Maleema's mission is to <strong>transform banana crop waste into the world's most accessible natural fibre alternative</strong> — creating income for smallholder farmers, zero-waste products for conscious brands, and a genuine scalable replacement for cotton across yarn, cello, fabric, rope, and beyond.<br><br>We are not making a compromise product. <strong>We are making the better product.</strong></p>
-    </div>
-    <div class="vm-quote-block reveal d3">
-      <div class="big-q">"</div>
-      <blockquote>"The banana plant produces the fruit — and then it's done. The stem, the trunk, the entire plant is left behind as waste. That waste contains one of nature's finest fibres. Maleema is the bridge between what farmers throw away and what the fashion industry desperately needs."</blockquote>
-      <cite>— Maleema Brand Statement</cite>
-    </div>
-  </div>
-</section>
-
-<!-- MANIFESTO -->
-<section class="manifesto">
-  <span class="manifesto-small reveal">The Alternative Has Arrived</span>
-  <h2 class="manifesto-h reveal d1">
-    <span class="line1">Banana Fibre Is</span>
-    <span class="line2">The Biggest</span>
-    <span class="line3">Cotton Alternative</span>
-  </h2>
-  <p class="manifesto-body reveal d2">
-    Cotton has held fashion hostage for centuries. <strong>It demands water, land, chemicals, and time</strong> — and poisons the rivers around the factories that process it. Every year, the fashion industry produces over 92 million tonnes of textile waste from a crop that should never have been the only option.
-    <br><br>
-    Banana fibre doesn't need new land. It needs no irrigation. It grows as a by-product of food — and it produces a fibre that is <strong>stronger than jute, more lustrous than cotton, naturally antimicrobial, and fully biodegradable</strong>. It can replace cotton in yarn, plastic in packaging, synthetics in fabric, rope, paper, and craft.
-    <br><br>
-    <strong>This is not a niche. This is the next material of fashion.</strong>
-  </p>
-</section>
-
-<!-- WHAT IS BANANA FIBRE -->
-<section class="what-section">
-  <div class="what-grid">
-    <div class="reveal">
-      <div class="sec-tag">The Material</div>
-      <h2 class="sec-h" style="margin-bottom:2rem">One Plant.<br><span class="gold">Infinite</span><br><span class="outline">Uses.</span></h2>
-      <p>Banana fibre comes from the pseudostem — the large stalk — of the Musa banana plant. After harvest, the entire stem is discarded as agricultural waste. <strong>Maleema extracts long cellulosic fibres</strong> from this waste and spins, weaves, or pulps them into premium products.</p>
-      <p>The fibre carries a natural silk-like lustre. It is <strong>stronger than jute, lighter than cotton, naturally moisture-wicking and antimicrobial</strong>. It accepts dyes beautifully. It composts in under 2 years. And every kilogram we produce diverts 1 kg of agricultural waste from burning.</p>
-      <div class="fibre-uses">
-        <span class="use-pill">Fashion Yarn</span>
-        <span class="use-pill">Cello Sheets</span>
-        <span class="use-pill">Woven Fabric</span>
-        <span class="use-pill">Rope & Cord</span>
-        <span class="use-pill">Eco Packaging</span>
-        <span class="use-pill">Artisan Paper</span>
-        <span class="use-pill">Home Textiles</span>
-        <span class="use-pill">Stationery</span>
-        <span class="use-pill">Industrial Fibre</span>
-      </div>
-    </div>
-    <div class="reveal d2">
-      <div class="what-visual">
-        <div class="plant-svg-wrap">
-          <svg width="200" height="240" viewBox="0 0 200 240" fill="none" style="animation:float 5s ease-in-out infinite">
-            <ellipse cx="100" cy="120" rx="80" ry="100" stroke="#C9A84C" stroke-width="1" opacity=".22"/>
-            <ellipse cx="100" cy="120" rx="62" ry="80" stroke="#C9A84C" stroke-width="1" opacity=".3"/>
-            <ellipse cx="100" cy="120" rx="45" ry="60" stroke="#C9A84C" stroke-width="1.5" opacity=".4"/>
-            <ellipse cx="100" cy="120" rx="28" ry="38" stroke="#C9A84C" stroke-width="1.5" opacity=".6"/>
-            <ellipse cx="100" cy="120" rx="14" ry="20" fill="#C9A84C" opacity=".1" stroke="#C9A84C" stroke-width="2"/>
-            <circle cx="100" cy="120" r="5" fill="#C9A84C"/>
-            <line x1="100" y1="20" x2="100" y2="0" stroke="#3A4E28" stroke-width="1" opacity=".6"/>
-            <line x1="100" y1="220" x2="100" y2="240" stroke="#3A4E28" stroke-width="1" opacity=".6"/>
-            <line x1="18" y1="120" x2="0" y2="120" stroke="#3A4E28" stroke-width="1" opacity=".6"/>
-            <line x1="182" y1="120" x2="200" y2="120" stroke="#3A4E28" stroke-width="1" opacity=".6"/>
-            <path d="M40 60 Q70 90 100 120" stroke="#3A4E28" stroke-width="1" opacity=".4"/>
-            <path d="M160 60 Q130 90 100 120" stroke="#3A4E28" stroke-width="1" opacity=".4"/>
-            <path d="M40 180 Q70 150 100 120" stroke="#3A4E28" stroke-width="1" opacity=".4"/>
-            <path d="M160 180 Q130 150 100 120" stroke="#3A4E28" stroke-width="1" opacity=".4"/>
-          </svg>
-        </div>
-        <div class="what-specs">
-          <div class="what-spec"><div class="ws-n">2×</div><span class="ws-l">Stronger than jute</span></div>
-          <div class="what-spec"><div class="ws-n">12+</div><span class="ws-l">Fibre grades</span></div>
-          <div class="what-spec"><div class="ws-n">&lt;2yr</div><span class="ws-l">Full compost time</span></div>
-          <div class="what-spec"><div class="ws-n">100%</div><span class="ws-l">Crop waste origin</span></div>
-        </div>
+    <div class="farm-quote-cell">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--ice);line-height:1.6;margin-bottom:14px;">"When a banana is harvested, the plant's work isn't over. For us, that's when it begins."</div>
+        <div style="font-size:.6rem;color:var(--sky);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">— Maleema Founding Principle</div>
       </div>
     </div>
   </div>
-</section>
+</div></section>
 
-<!-- PROCESS COMPACT -->
-<section class="process-compact">
-  <div class="process-header">
-    <div class="reveal">
-      <div class="sec-tag">How It's Made</div>
-      <h2 class="sec-h">Field Waste<br><span class="gold">To Finished</span><br><span class="outline">Fibre</span></h2>
+<!-- WHY -->
+<section id="why"><div class="section-inner">
+  <div class="eyebrow">Why Banana Fibre</div>
+  <h2 class="shead">Nature's Most<br/><em>Underestimated Fibre</em></h2>
+  <p class="sdesc">One plant. One harvest. An entirely new fibre supply chain built from waste the world has been ignoring for generations.</p>
+  <div class="why-grid">
+    <div class="why-card"><span class="why-icon">💧</span><h3>Zero Additional Water</h3><p>Banana is irrigated for its fruit. The fibre comes entirely from the waste stem — no extra water, no extra irrigation, no new environmental footprint whatsoever.</p></div>
+    <div class="why-card"><span class="why-icon">💪</span><h3>Stronger Than Jute</h3><p>Banana fibre has 2× the tensile strength of jute with a natural silk-like lustre. Moisture-wicking, antimicrobial, and beautifully soft at fine processing grades.</p></div>
+    <div class="why-card"><span class="why-icon">🌍</span><h3>Massive Scale Potential</h3><p>India grows millions of tonnes of bananas annually. The pseudostem waste is enormous — and almost entirely untapped. Maleema is turning that into a global supply chain.</p></div>
+    <div class="why-card"><span class="why-icon">♻️</span><h3>Fully Circular</h3><p>From agricultural waste to finished product to end-of-life, every Maleema material is 100% biodegradable — composting fully in under 2 years, zero residue.</p></div>
+    <div class="why-card"><span class="why-icon">👩‍🌾</span><h3>Farmer-First Value</h3><p>We pay smallholder farmers for stem waste, turning a disposal problem into a 30% seasonal income boost. Women lead our processing workforce.</p></div>
+    <div class="why-card"><span class="why-icon">🧬</span><h3>Naturally Antimicrobial</h3><p>Inherent antimicrobial properties make banana fibre ideal for medical textiles, hygiene applications, and sensitive skin — without any chemical treatment.</p></div>
+  </div>
+</div></section>
+
+<!-- CELLULOSE -->
+<section id="cellulose"><div class="section-inner">
+  <div class="cellulose-layout">
+    <div>
+      <div class="eyebrow">Our Core Innovation</div>
+      <h2 class="shead">The Cellulose<br/><em>Sheet —<br/>1 Litre to Fibre</em></h2>
+      <p class="sdesc">At the heart of Maleema's process is a proprietary cellulose conversion pathway. We extract, cottonize, and spin banana pseudostem into premium yarn and sheets.</p>
+      <div class="c-steps">
+        <div class="c-step"><div class="c-num">01</div><div><h4>Stem Collection</h4><p>Banana pseudostems collected from partner farms post-harvest. No new land, no new water — pure agricultural rescue at scale.</p></div></div>
+        <div class="c-step"><div class="c-num">02</div><div><h4>Cellulose Extraction</h4><p>Long cellulosic fibres mechanically separated from the stem's inner pulp — clean, chemical-light, and precise.</p></div></div>
+        <div class="c-step"><div class="c-num">03</div><div><h4>Cottonization</h4><p>Fibres processed to achieve cotton-like softness and hand-feel — ready for conventional spinning machinery.</p></div></div>
+        <div class="c-step"><div class="c-num">04</div><div><h4>Yarn Spinning &amp; Sheet Formation</h4><p>Cottonized fibre spun into yarn or wet-laid into cellulose sheets depending on the end application.</p></div></div>
+      </div>
+      <div class="c-badges">
+        <span class="cbadge">Cottonized Fibre</span>
+        <span class="cbadge">Cellulose Extraction</span>
+        <span class="cbadge">Premium Yarn</span>
+        <span class="cbadge">Sheet Formation</span>
+        <span class="cbadge">~1 Litre Process</span>
+      </div>
     </div>
-    <div class="reveal d2">
-      <p>From the moment a banana is harvested, Maleema's process begins. Five key stages convert agricultural waste into premium textile — no virgin land, no extra water, zero compromise on quality.</p>
+    <div class="c-visual">
+      <div class="c-big-num">~1L</div>
+      <div class="c-big-label">Process water per batch</div>
+      <div class="c-big-sub">Our cellulose conversion pathway minimises water consumption from the ground up. Where conventional fibre processing demands thousands of litres, Maleema's extraction uses a fraction — delivering premium cellulose with a near-zero water overhead.</div>
+      <div class="c-divider"></div>
+      <div class="c-mini-stats">
+        <div class="c-mini"><div class="c-mini-val">9%</div><div class="c-mini-desc">Water savings vs. conventional</div></div>
+        <div class="c-mini"><div class="c-mini-val">10%</div><div class="c-mini-desc">Additional resource efficiency</div></div>
+        <div class="c-mini"><div class="c-mini-val">12+</div><div class="c-mini-desc">Fibre grades unlocked</div></div>
+      </div>
     </div>
   </div>
-  <div class="p-steps-row reveal">
-    <div class="p-step-c">
-      <div class="p-dot">🌿</div>
-      <div class="p-step-title">Collect</div>
-      <p class="p-step-desc">Banana pseudostem collected from partner farmers post-harvest. Zero new land or crops needed.</p>
-    </div>
-    <div class="p-step-c">
-      <div class="p-dot">⚙️</div>
-      <div class="p-step-title">Extract</div>
-      <p class="p-step-desc">Stems stripped and mechanically decorticated to separate long cellulosic fibres cleanly.</p>
-    </div>
-    <div class="p-step-c">
-      <div class="p-dot">☀️</div>
-      <div class="p-step-title">Grade</div>
-      <p class="p-step-desc">Fibres sun-dried and hand-sorted into 12+ grades by length, strength, and fineness.</p>
-    </div>
-    <div class="p-step-c">
-      <div class="p-dot">🧶</div>
-      <div class="p-step-title">Spin / Pulp</div>
-      <p class="p-step-desc">Graded fibre is spun into yarn or wet-laid into cello sheets depending on the product.</p>
-    </div>
-    <div class="p-step-c">
-      <div class="p-dot">📦</div>
-      <div class="p-step-title">Dispatch</div>
-      <p class="p-step-desc">QC tested, wound, and packed in compostable packaging. Ready for your brand to use.</p>
-    </div>
+</div></section>
+
+<!-- PROCESS -->
+<section id="process"><div class="section-inner">
+  <div class="eyebrow">How It's Made</div>
+  <h2 class="shead">Field Waste to<br/><em>Finished Fibre</em></h2>
+  <p class="sdesc">Five steps. One plant. No waste. Every banana stem becomes a premium material — engineered to use less and give more at every stage.</p>
+  <div class="process-steps">
+    <div class="p-step"><div class="p-step-n">STEP 01</div><div class="p-step-icon">🌿</div><h4>Collect</h4><p>Pseudostem from partner farms. Zero new crops, zero new land.</p></div>
+    <div class="p-step"><div class="p-step-n">STEP 02</div><div class="p-step-icon">⚙️</div><h4>Extract</h4><p>Mechanical decortication releases long cellulosic fibres cleanly.</p></div>
+    <div class="p-step"><div class="p-step-n">STEP 03</div><div class="p-step-icon">☀️</div><h4>Grade</h4><p>Sun-dried and sorted into 12+ grades by fineness and strength.</p></div>
+    <div class="p-step"><div class="p-step-n">STEP 04</div><div class="p-step-icon">🧶</div><h4>Spin / Sheet</h4><p>Cottonized fibre spun into yarn or wet-laid into cellulose sheets.</p></div>
+    <div class="p-step"><div class="p-step-n">STEP 05</div><div class="p-step-icon">📦</div><h4>Dispatch</h4><p>QC tested, compostable packaging. Delivered 5–14 days worldwide.</p></div>
   </div>
-</section>
+  <div class="process-stats">
+    <div class="ps-card"><div class="ps-num">9%</div><div class="ps-desc">Water savings in our production process vs conventional alternatives</div></div>
+    <div class="ps-card"><div class="ps-num">10%</div><div class="ps-desc">Additional resource efficiency from our cellulose extraction process</div></div>
+    <div class="ps-card"><div class="ps-num">90%</div><div class="ps-desc">Less CO₂ emissions versus conventional textile fibre production</div></div>
+  </div>
+</div></section>
 
 <!-- PRODUCTS -->
-<section class="products-strip" id="products">
-  <div class="products-header">
-    <div class="reveal">
-      <div class="sec-tag">What We Make</div>
-      <h2 class="sec-h">Six Products.<br><span class="gold">One Plant.</span><br><span class="outline">Endless Use.</span></h2>
-    </div>
-    <div class="reveal d2">
-      <p>Everything Maleema makes comes from the same banana stem waste. Different processing methods unlock different forms — from fine yarn for fashion to robust cello for packaging to raw fibre for artisan craft.</p>
-    </div>
+<section id="products"><div class="section-inner">
+  <div class="eyebrow">Product Ranges</div>
+  <h2 class="shead">Six Ranges.<br/><em>One Plant.</em></h2>
+  <p class="sdesc">From precision yarn for fashion to antimicrobial fabric for surgical applications — everything Maleema makes starts in the same banana field.</p>
+  <div class="product-grid">
+    <div class="p-card"><div class="p-card-top"><span class="p-card-emoji">🧶</span><div class="p-card-range">Range 01</div><h3>Yarn</h3></div><div class="p-card-body"><p>Single to 4-ply banana fibre yarn in natural off-white. Silk-like lustre, superior tensile strength. Available in multiple counts for knit and woven applications.</p><a href="#samples" class="p-link">Request sample</a></div></div>
+    <div class="p-card"><div class="p-card-top"><span class="p-card-emoji">🏠</span><div class="p-card-range">Range 02</div><h3>Home Textiles</h3></div><div class="p-card-body"><p>Woven panels, soft furnishing fabrics, and upholstery with natural earth texture. Durable, biodegradable, and tactile for interior applications.</p><a href="#samples" class="p-link">Request sample</a></div></div>
+    <div class="p-card"><div class="p-card-top"><span class="p-card-emoji">🏥</span><div class="p-card-range">Range 03</div><h3>Medical Textiles</h3></div><div class="p-card-body"><p>PPE kits, surgical fabrics, and hygiene-grade materials. Banana fibre's natural antimicrobial properties make it ideal for medical-grade applications.</p><a href="#medical" class="p-link">Learn more</a></div></div>
+    <div class="p-card"><div class="p-card-top"><span class="p-card-emoji">👗</span><div class="p-card-range">Range 04</div><h3>Fashion &amp; Clothing</h3></div><div class="p-card-body"><p>Premium apparel-grade banana fibre fabric for conscious fashion brands. Soft, strong, and naturally lustrous — ready for ethical fashion at scale.</p><a href="#samples" class="p-link">Request sample</a></div></div>
+    <div class="p-card"><div class="p-card-top"><span class="p-card-emoji">🧵</span><div class="p-card-range">Range 05</div><h3>Knit Textiles</h3></div><div class="p-card-body"><p>Banana fibre yarn engineered for knitting — circular and flat knit compatible. Ideal for activewear, innerwear, and sustainable jersey construction.</p><a href="#samples" class="p-link">Request sample</a></div></div>
+    <div class="p-card"><div class="p-card-top"><span class="p-card-emoji">📄</span><div class="p-card-range">Range 06</div><h3>Cellulose Sheets</h3></div><div class="p-card-body"><p>Translucent, flexible banana cellulose sheets for packaging, stationery, and industrial wrap. Stronger than tissue, fully compostable, and endlessly versatile.</p><a href="#samples" class="p-link">Request sample</a></div></div>
   </div>
-  <div class="p-row">
-    <div class="p-item reveal">
-      <span class="p-item-icon">🧶</span>
-      <div class="p-item-name">Banana Fibre Yarn</div>
-      <div class="p-item-sub">Fashion · Weaving · Craft</div>
-      <p class="p-item-desc">Single to 4-ply yarn in natural off-white. Silk-like lustre, superior tensile strength. Drop-in cotton replacement for knit and woven applications.</p>
-      <a href="#order" class="p-item-link">Request sample →</a>
-    </div>
-    <div class="p-item reveal d1">
-      <span class="p-item-icon">📄</span>
-      <div class="p-item-name">Banana Cello Sheets</div>
-      <div class="p-item-sub">Packaging · Stationery · Wrap</div>
-      <p class="p-item-desc">Translucent, flexible cellulose sheets from banana pulp. Stronger than tissue, fully compostable. The eco-packaging alternative the world needs.</p>
-      <a href="#order" class="p-item-link">Request sample →</a>
-    </div>
-    <div class="p-item reveal d2">
-      <span class="p-item-icon">🪢</span>
-      <div class="p-item-name">Woven Banana Fabric</div>
-      <div class="p-item-sub">Apparel · Upholstery · Home</div>
-      <p class="p-item-desc">Plain-weave and twill panels with natural earth texture and strong hand-feel. For fashion, bags, home furnishing, and upholstery.</p>
-      <a href="#order" class="p-item-link">Request sample →</a>
-    </div>
-    <div class="p-item reveal">
-      <span class="p-item-icon">🌀</span>
-      <div class="p-item-name">Twisted Rope & Cord</div>
-      <div class="p-item-sub">Macramé · Industrial · Décor</div>
-      <p class="p-item-desc">3 and 4-strand natural rope with higher strength than jute. Popular in macramé, décor, and sustainable packaging.</p>
-      <a href="#order" class="p-item-link">Request sample →</a>
-    </div>
-    <div class="p-item reveal d1">
-      <span class="p-item-icon">✨</span>
-      <div class="p-item-name">Raw Craft Fibre</div>
-      <div class="p-item-sub">Artists · Paper-makers · Weavers</div>
-      <p class="p-item-desc">Loose banana fibre bundles in natural form. For paper-making, basket-weaving, floral arrangement, and eco-art worldwide.</p>
-      <a href="#order" class="p-item-link">Request sample →</a>
-    </div>
-    <div class="p-item reveal d2">
-      <span class="p-item-icon">🎁</span>
-      <div class="p-item-name">Sample Bundle Kit</div>
-      <div class="p-item-sub">Designers · R&D · Brands</div>
-      <p class="p-item-desc">All 5 products in one curated kit — 3 yarn weights, 2 cello sizes, rope, fabric swatch, and raw fibre. For material developers and textile designers.</p>
-      <a href="#order" class="p-item-link">Order kit →</a>
-    </div>
-  </div>
-</section>
+</div></section>
 
-<!-- IMPACT ROW -->
-<div class="impact-row reveal">
-  <div class="impact-row-grid">
-    <div class="ir-item"><div class="ir-n">90%</div><div class="ir-l">Less CO₂ vs cotton</div></div>
-    <div class="ir-item"><div class="ir-n">0 L</div><div class="ir-l">Extra water used</div></div>
-    <div class="ir-item"><div class="ir-n">30%</div><div class="ir-l">Farmer income boost</div></div>
-    <div class="ir-item"><div class="ir-n">100%</div><div class="ir-l">Crop waste sourced</div></div>
+<!-- MEDICAL -->
+<section id="medical"><div class="section-inner">
+  <div class="eyebrow">Medical Textiles</div>
+  <h2 class="shead">Built for the<br/><em>Highest Standards</em></h2>
+  <p class="sdesc">Banana fibre's inherent antimicrobial and moisture-wicking properties make it exceptional for medical and hygiene textiles — no chemical additives required.</p>
+  <div class="medical-grid">
+    <div class="med-card"><div class="med-icon">🦺</div><h4>PPE Kits</h4><p>Naturally antimicrobial banana fibre fabric for personal protective equipment — breathable, lightweight, and biodegradable at end of life.</p></div>
+    <div class="med-card"><div class="med-icon">🔬</div><h4>Surgical Kits</h4><p>High-grade banana fibre for surgical drapes, gowns, and wraps. Consistent quality across every certified fibre grade we produce.</p></div>
+    <div class="med-card"><div class="med-icon">🩹</div><h4>Hygiene Textiles</h4><p>Soft, antimicrobial banana fibre for wound care, dressings, and sensitive-skin hygiene. No finishing chemicals required.</p></div>
+    <div class="med-card"><div class="med-icon">🧤</div><h4>Protective Apparel</h4><p>Functional workwear and hospital garments leveraging banana fibre's natural strength in demanding clinical environments.</p></div>
   </div>
-</div>
+  <div class="med-strip">
+    <p>🌿 Our medical-grade banana fibre is naturally antimicrobial, moisture-wicking, and skin-safe — meeting clinical performance needs without synthetic inputs.</p>
+    <a href="#samples">Request Medical Samples →</a>
+  </div>
+</div></section>
 
-<!-- THE SHIFT -->
-<section class="shift" id="shift">
-  <div class="shift-content">
-    <span class="shift-eyebrow reveal">The Future of Fashion Starts Here</span>
-    <h2 class="shift-h reveal d1">
-      <span class="break">Fashion Needs</span>
-      <span class="break" style="color:var(--gold)">To Change.</span>
-      <span class="break outline">Maleema Is It.</span>
-    </h2>
-    <p class="shift-body reveal d2">
-      The global fashion industry is the <strong>second largest consumer of water</strong> on earth, responsible for 8–10% of global carbon emissions. The primary reason? An almost total dependence on cotton and synthetic fibres that the planet cannot sustain at current scale.
-      <br><br>
-      Banana fibre is not a compromise. It is not a "sustainable option" that trades performance for ethics. <strong>It is a superior natural fibre</strong> — naturally stronger, naturally lustrous, naturally biodegradable — available at massive scale from one of the world's most widely grown crops.
-      <br><br>
-      Maleema exists to make this transition happen. For every designer, brand, and manufacturer ready to be part of the next era of textile.
-    </p>
+<!-- IMPACT -->
+<section id="impact"><div class="section-inner">
+  <div class="eyebrow" style="color:rgba(255,255,255,.65);">Sustainability Impact</div>
+  <h2 class="shead">Numbers That<br/><em style="color:rgba(255,255,255,.5)">Matter</em></h2>
+  <p class="sdesc">Every kilogram of Maleema fibre is a measurable act of environmental restoration.</p>
+  <div class="impact-grid">
+    <div class="imp-card"><div class="imp-num">9%</div><div class="imp-label">Water use reduction in our production process</div></div>
+    <div class="imp-card"><div class="imp-num">10%</div><div class="imp-label">Additional resource savings from optimised extraction</div></div>
+    <div class="imp-card"><div class="imp-num">90%</div><div class="imp-label">Less CO₂ vs conventional fibre production</div></div>
+    <div class="imp-card"><div class="imp-num">100%</div><div class="imp-label">Agricultural waste origin — zero new crops grown</div></div>
+    <div class="imp-card"><div class="imp-num">30%</div><div class="imp-label">Increase in farmer income per season</div></div>
+    <div class="imp-card"><div class="imp-num">60%</div><div class="imp-label">Of our processing team are women</div></div>
+    <div class="imp-card"><div class="imp-num">&lt;2yr</div><div class="imp-label">Full biodegradation of all Maleema materials</div></div>
+    <div class="imp-card"><div class="imp-num">12+</div><div class="imp-label">Fibre grades unlocked from a single plant</div></div>
   </div>
-  <div class="shift-pillars reveal d3">
-    <div class="s-pillar">
-      <div class="s-pillar-num">01</div>
-      <div class="s-pillar-title">Zero New Resources</div>
-      <p class="s-pillar-text">Every gram of Maleema fibre begins as agricultural waste. No new land is cleared, no new water is used, no new crops are grown. The raw material already exists — being burned in fields across India every season.</p>
-    </div>
-    <div class="s-pillar">
-      <div class="s-pillar-num">02</div>
-      <div class="s-pillar-title">Farmer-First Economics</div>
-      <p class="s-pillar-text">We pay smallholder banana farmers for pseudostem waste, turning a disposal problem into an income stream. Farmers earn 30% more per season. Their crop burns less. Their land recovers faster. Women make up 60% of our team.</p>
-    </div>
-    <div class="s-pillar">
-      <div class="s-pillar-num">03</div>
-      <div class="s-pillar-title">Full Circularity</div>
-      <p class="s-pillar-text">From field to product to end-of-life, every Maleema material is 100% biodegradable. Our cello, yarn, and fabric return to the earth in under 2 years. No microplastics. No landfill legacy. No synthetic residue.</p>
-    </div>
-  </div>
-</section>
+</div></section>
 
-<!-- ORDER CTA -->
-<section class="cta-block" id="order">
-  <div class="cta-left reveal">
-    <h2>Start with<br>a <span>Sample</span></h2>
-    <p>Tell us what you're building and we'll send you the right Maleema material to test. No commitment needed. No minimum order for samples.</p>
-    <div class="cta-perks">
-      <div class="cta-perk"><span>→</span> Ships 5–7 days within India</div>
-      <div class="cta-perk"><span>→</span> 10–14 days internationally</div>
-      <div class="cta-perk"><span>→</span> Custom yarn count & cello thickness available</div>
-      <div class="cta-perk"><span>→</span> PETA · REACH · CAL-PROP certified</div>
-      <div class="cta-perk"><span>→</span> Natural dyeing available on request</div>
+<!-- VISION -->
+<section id="vision"><div class="section-inner">
+  <div class="eyebrow">Vision &amp; Mission</div>
+  <div class="vision-layout">
+    <div class="vision-quote-block">
+      <div class="vision-quote">"The banana plant produces the fruit — and then it's done. That stem contains one of nature's finest fibres. Maleema is the bridge between what farmers throw away and what the textile industry desperately needs."</div>
+      <div class="vision-attr">— Maleema Brand Statement</div>
     </div>
-  </div>
-  <div class="reveal d2">
-    <div class="cta-form">
-      <div class="c-row">
-        <input type="text" class="c-input" placeholder="Your Name">
-        <input type="text" class="c-input" placeholder="Brand / Company">
+    <div>
+      <h2 class="shead" style="margin-bottom:20px">A World Where<br/><em>Waste Weaves</em></h2>
+      <div class="vision-right">
+        <p>We envision a global textile industry where agricultural by-products replace virgin crops as the primary source of natural fibre. A world where every banana harvested also yields premium material — and no stem is ever burned again.</p>
+        <p>Maleema's mission is to transform banana crop waste into the world's most accessible natural fibre alternative — creating income for smallholder farmers and a genuine scalable replacement across yarn, cellulose sheets, medical textiles, home textiles, fashion, and knit.</p>
+        <p><strong>We are not making a compromise product. We are making the better product.</strong></p>
       </div>
-      <input type="email" class="c-input" placeholder="Email Address">
-      <input type="tel" class="c-input" placeholder="Phone / WhatsApp">
-      <select class="c-select">
-        <option value="" disabled selected>Product Interest</option>
-        <option>Banana Fibre Yarn</option>
-        <option>Banana Cello Sheets</option>
-        <option>Woven Fabric</option>
-        <option>Rope & Cord</option>
-        <option>Raw Craft Fibre</option>
-        <option>Full Sample Bundle Kit</option>
-      </select>
-      <select class="c-select">
-        <option value="" disabled selected>Your Industry</option>
-        <option>Fashion / Apparel</option>
-        <option>Home Textiles</option>
-        <option>Eco Packaging</option>
-        <option>Stationery / Paper</option>
-        <option>Artisan / Craft</option>
-        <option>Research & Development</option>
-        <option>Other</option>
-      </select>
-      <button class="btn-submit-full" onclick="alert('Thank you! Our team will contact you within 24 hours.')">Send Sample Request</button>
     </div>
   </div>
-</section>
+</div></section>
+
+<!-- SAMPLES -->
+<section id="samples"><div class="section-inner">
+  <div class="eyebrow">Get Samples</div>
+  <h2 class="shead">Start With a<br/><em>Sample</em></h2>
+  <p class="sdesc">Tell us what you're building and we'll send the right Maleema material to test. No commitment. No minimum for samples.</p>
+  <div class="form-wrap">
+    <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name"/></div>
+    <div class="fg"><label>Email</label><input type="email" placeholder="you@brand.com"/></div>
+    <div class="fg"><label>Company / Brand</label><input type="text" placeholder="Your company name"/></div>
+    <div class="fg"><label>Country</label><input type="text" placeholder="Country"/></div>
+    <div class="fg full">
+      <label>Product Range Interest</label>
+      <div class="chips">
+        <span class="chip" onclick="this.classList.toggle('active')">Yarn</span>
+        <span class="chip" onclick="this.classList.toggle('active')">Cellulose Sheets</span>
+        <span class="chip" onclick="this.classList.toggle('active')">Medical Textiles</span>
+        <span class="chip" onclick="this.classList.toggle('active')">Home Textiles</span>
+        <span class="chip" onclick="this.classList.toggle('active')">Fashion &amp; Clothing</span>
+        <span class="chip" onclick="this.classList.toggle('active')">Knit Textiles</span>
+        <span class="chip" onclick="this.classList.toggle('active')">Full Sample Bundle</span>
+      </div>
+    </div>
+    <div class="fg full"><label>What are you building?</label><textarea placeholder="Briefly describe your product or application…"></textarea></div>
+    <div class="form-submit"><button type="button">Send Sample Request →</button></div>
+    <div class="form-assures">
+      <span class="assure">Ships 5–7 days within India</span>
+      <span class="assure">10–14 days internationally</span>
+      <span class="assure">Custom yarn count &amp; cello thickness available</span>
+      <span class="assure">PETA · REACH · CAL-PROP certified</span>
+    </div>
+  </div>
+</div></section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#" class="footer-logo">Male<span>ema</span></a>
-      <p>India's banana fibre textile brand. We convert agricultural waste into premium yarn, cello sheets, and sustainable fabric — for a fashion industry ready to change.</p>
-      <div class="footer-socials">
-        <a href="#" class="soc">ig</a>
-        <a href="#" class="soc">li</a>
-        <a href="#" class="soc">wa</a>
-        <a href="#" class="soc">yt</a>
-      </div>
+  <div class="footer-grid">
+    <div class="f-brand">
+      <div class="f-brand-logo">Male<span>ema</span></div>
+      <p>India's banana fibre textile brand. We convert agricultural waste into premium yarn, cellulose sheets, and sustainable fabric — for brands ready to lead the next era of textiles.</p>
     </div>
-    <div class="footer-col">
-      <h4>Products</h4>
-      <ul>
-        <li><a href="#">Banana Yarn</a></li>
-        <li><a href="#">Cello Sheets</a></li>
-        <li><a href="#">Woven Fabric</a></li>
-        <li><a href="#">Rope & Cord</a></li>
-        <li><a href="#">Craft Fibre</a></li>
-        <li><a href="#">Sample Kit</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Brand</h4>
-      <ul>
-        <li><a href="#">Vision & Mission</a></li>
-        <li><a href="#">The Cotton Problem</a></li>
-        <li><a href="#">Impact & SDGs</a></li>
-        <li><a href="#">Farmer Partners</a></li>
-        <li><a href="#">Certifications</a></li>
-        <li><a href="#">Press & Media</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="#">online@maleema.com</a></li>
-        <li><a href="#">+91 7549017017</a></li>
-        <li><a href="#">WhatsApp Chat</a></li>
-        <li><a href="#">Download Catalogue</a></li>
-        <li><a href="#">Terms & Privacy</a></li>
-      </ul>
-    </div>
+    <div class="f-col"><h5>Products</h5><ul><li><a href="#products">Banana Fibre Yarn</a></li><li><a href="#products">Cellulose Sheets</a></li><li><a href="#medical">Medical Textiles</a></li><li><a href="#products">Home Textiles</a></li><li><a href="#products">Fashion Textiles</a></li><li><a href="#products">Knit Textiles</a></li></ul></div>
+    <div class="f-col"><h5>Brand</h5><ul><li><a href="#vision">Vision &amp; Mission</a></li><li><a href="#why">Why Banana Fibre</a></li><li><a href="#impact">Sustainability Impact</a></li><li><a href="#cellulose">Cellulose Process</a></li><li><a href="#process">How It's Made</a></li></ul></div>
+    <div class="f-col"><h5>Contact</h5><ul><li><a href="mailto:hello@maleema.in">hello@maleema.in</a></li><li><a href="#">WhatsApp Chat</a></li><li><a href="#">Download Catalogue</a></li><li><a href="#">Press &amp; Media</a></li></ul></div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 Maleema Textiles · Made in India · Changing Fashion</p>
-    <p><a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a> &nbsp;·&nbsp; <a href="#">Sitemap</a></p>
+    <p>© 2025 Maleema Textiles · Made in India · Changing Textiles</p>
+    <div class="socials">
+      <a class="soc" href="#">ig</a>
+      <a class="soc" href="#">li</a>
+      <a class="soc" href="#">wa</a>
+      <a class="soc" href="#">yt</a>
+    </div>
   </div>
 </footer>
 
 <script>
-// Cursor
-const cur=document.getElementById('c'),curR=document.getElementById('cr');
-document.addEventListener('mousemove',e=>{
-  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
-  setTimeout(()=>{curR.style.left=e.clientX+'px';curR.style.top=e.clientY+'px';},90);
+const ham = document.getElementById('ham');
+const menu = document.getElementById('mobileMenu');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('open');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
 });
-document.querySelectorAll('a,button,.p-item,.c-stat,.s-pillar,.ir-item,.use-pill').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';curR.style.width='46px';curR.style.height='46px';});
-  el.addEventListener('mouseleave',()=>{cur.style.width='9px';cur.style.height='9px';curR.style.width='32px';curR.style.height='32px';});
-});
-
-// Nav
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
-
-// Threads
-const container=document.getElementById('threads');
-for(let i=0;i<12;i++){
-  const d=document.createElement('div');d.className='thread';
-  d.style.cssText=`left:${8+i*8}%;height:${40+Math.random()*50}%;top:${Math.random()*30}%;animation-delay:${Math.random()*4}s;animation-duration:${4+Math.random()*4}s;opacity:${0.1+Math.random()*0.25}`;
-  container.appendChild(d);
-}
-
-// Scroll reveal
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
-
-// Bar animation
-const barObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.querySelectorAll('.comp-bar').forEach(b=>{
-        b.style.transition='width 1.5s ease';
-        b.style.width=b.dataset.w;
-      });
-    }
+document.querySelectorAll('.mob-link').forEach(l => {
+  l.addEventListener('click', () => {
+    ham.classList.remove('open');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
   });
-},{threshold:0.3});
-const cs=document.getElementById('compSection');
-if(cs)barObs.observe(cs);
+});
 </script>
 </body>
 </html>
