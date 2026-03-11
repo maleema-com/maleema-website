@@ -68,8 +68,24 @@ nav.scrolled{background:rgba(14,14,11,.92);backdrop-filter:blur(18px);border-bot
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:9rem 4rem 6rem 4rem;position:relative;z-index:2;border-right:1px solid var(--line)}
 .hero-tag{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.8rem;margin-bottom:2rem;opacity:0;animation:up .9s .2s forwards}
 .hero-tag::before{content:'';width:32px;height:1px;background:var(--gold)}
-.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4.5rem,9vw,9rem);line-height:.9;letter-spacing:.04em;color:var(--cream);margin-bottom:1.5rem;opacity:0;animation:up .9s .4s forwards}
-.hero-h1 .gold-word{color:var(--gold);display:block}
+.hero-h1{
+font-family:'Bebas Neue',sans-serif;
+font-size:clamp(3rem,7vw,8rem);
+line-height:.9;
+letter-spacing:.04em;
+color:var(--cream);
+margin-bottom:1.5rem;
+opacity:0;
+animation:up .9s .4s forwards;
+}
+
+.hero{
+padding:80px 20px;
+}
+
+body{
+overflow-x:hidden;
+}.hero-h1 .gold-word{color:var(--gold);display:block}
 .hero-h1 .outline-word{-webkit-text-stroke:1px var(--cream);color:transparent;display:block}
 .hero-statement{font-size:1.25rem;line-height:1.85;font-weight:300;color:rgba(242,234,216,.6);max-width:480px;margin-bottom:3rem;opacity:0;animation:up .9s .6s forwards}
 .hero-statement strong{color:var(--gold);font-weight:600}
