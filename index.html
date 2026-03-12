@@ -240,6 +240,32 @@ footer{background:var(--navy);border-top:1px solid rgba(96,165,250,.1);padding:6
 .soc{width:34px;height:34px;border-radius:7px;background:rgba(255,255,255,.05);border:1px solid rgba(96,165,250,.14);display:flex;align-items:center;justify-content:center;font-size:.72rem;color:rgba(255,255,255,.45);text-decoration:none;transition:all .2s;}
 .soc:hover{background:var(--blue);border-color:var(--blue);color:var(--white);}
 @media(max-width:640px){.p-card-img{height:160px;}}
+  /* ── PRESS & MEDIA ── */
+#press{background:var(--deep);}
+.awards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.award-card{background:rgba(255,255,255,.03);border:1px solid rgba(96,165,250,.1);border-radius:16px;overflow:hidden;transition:all .3s;}
+.award-card:hover{background:rgba(37,99,235,.08);border-color:rgba(96,165,250,.3);transform:translateY(-4px);box-shadow:0 20px 48px rgba(5,13,31,.7);}
+.award-img-wrap{width:100%;height:220px;overflow:hidden;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(96,165,250,.08);}
+.award-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.85);transition:transform .4s,filter .4s;}
+.award-card:hover .award-img-wrap img{transform:scale(1.05);filter:brightness(1);}
+.award-body{padding:20px 20px 24px;}
+.award-tag{font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sky);margin-bottom:8px;}
+.award-body h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:8px;}
+.award-body p{font-size:.78rem;line-height:1.65;color:rgba(255,255,255,.45);font-weight:300;}
+
+/* Press Mobile */
+@media(max-width:1100px){.awards-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){
+  .awards-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .award-img-wrap{height:160px;}
+  .award-body{padding:14px 14px 18px;}
+  .award-body h4{font-size:1rem;}
+  .award-body p{font-size:.74rem;}
+}
+@media(max-width:380px){
+  .awards-grid{grid-template-columns:1fr;}
+  .award-img-wrap{height:200px;}
+}
 /* ═══════════════════════════
    RESPONSIVE
 ═══════════════════════════ */
@@ -348,6 +374,7 @@ footer{background:var(--navy);border-top:1px solid rgba(96,165,250,.1);padding:6
     <li><a href="#products">Products</a></li>
     <li><a href="#medical">Medical</a></li>
     <li><a href="#impact">Impact</a></li>
+    <li><a href="#press">Press</a></li>
   </ul>
   <a href="#samples" class="nav-cta">Get Samples →</a>
   <button class="hamburger" id="ham" aria-label="Menu">
@@ -364,6 +391,7 @@ footer{background:var(--navy);border-top:1px solid rgba(96,165,250,.1);padding:6
   <li><a href="#impact" class="mob-link">Impact</a></li>
   <li><a href="#vision" class="mob-link">Vision</a></li>
   <a href="#samples" class="mob-cta mob-link">Get Samples →</a>
+  <li><a href="#press" class="mob-link">Press &amp; Media</a></li>
 </ul>
 
 <!-- HERO -->
@@ -514,7 +542,7 @@ style="width:100%; height:auto;">
         <div class="p-card-img"><img src="https://cdn.shopify.com/s/files/1/0682/5446/6245/files/personal-protective-equipment-kit-393.jpg?v=1773309466" alt="Medical Textiles"/></div>
         <div class="p-card-info"><div class="p-card-range">Range 03</div><h3>Medical Textiles</h3></div>
       </div>
-      <div class="p-card-body"><p>PPE kits, surgical fabrics, and hygiene-grade materials. Banana fibre's natural antimicrobial properties make it ideal for medical-grade applications.</p><a href="#medical" class="p-link">Learn more</a></div>
+      <div class="p-card-body"><p>PPE kits, surgical fabrics, and hygiene-grade materials. Banana fibre's natural antimicrobial properties make it ideal for medical-grade applications.</p><a href="#medical" class="p-link"> Request Sample</a></div>
     </div>
     <div class="p-card">
       <div class="p-card-top">
@@ -535,7 +563,7 @@ style="width:100%; height:auto;">
         <div class="p-card-img"><img src="https://cdn.shopify.com/s/files/1/0682/5446/6245/files/e96a302e6874da3bfe4ef1b1ec5f217e.jpg?v=1773310043" alt="Cellulose Sheets"/></div>
         <div class="p-card-info"><div class="p-card-range">Range 06</div><h3>Banana Paper</h3></div>
       </div>
-      <div class="p-card-body"><p>Translucent, flexible banana cellulose sheets for packaging, stationery, and industrial wrap. Stronger than tissue, fully compostable, and endlessly versatile.</p><a href="#samples" class="p-link">Request sample</a></div>
+      <div class="p-card-body"><p>Translucent, flexible banana papers for packaging, stationery, and industrial wrap. Stronger than tissue, fully compostable, and endlessly versatile.</p><a href="#samples" class="p-link">Request sample</a></div>
     </div>
   </div>
 </div></section>
@@ -589,6 +617,54 @@ style="width:100%; height:auto;">
     </div>
   </div>
 </div></section>
+  <!-- PRESS & MEDIA -->
+<section id="press"><div class="section-inner">
+  <div class="eyebrow">Press &amp; Media</div>
+  <h2 class="shead">Awards &amp;<br/><em>Recognition</em></h2>
+  <p class="sdesc">Maleema's work has been recognised by leading institutions, media houses, and sustainability platforms across India and globally.</p>
+  <div class="awards-grid">
+    <div class="award-card">
+      <div class="award-img-wrap">
+        <img src="https://cdn.shopify.com/s/files/1/0682/5446/6245/files/Untitled_design_20.webp?v=1773311107" alt="Award 1"/>
+      </div>
+      <div class="award-body">
+        <div class="award-tag">Award · 2024</div>
+        <h4>Award Title Here</h4>
+        <p>Short description about this award or recognition received by Maleema.</p>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-img-wrap">
+        <img src="https://cdn.shopify.com/s/files/1/0682/5446/6245/files/Untitled_design_19.webp?v=1773311108" alt="Award 2"/>
+      </div>
+      <div class="award-body">
+        <div class="award-tag">Award · 2024</div>
+        <h4>Award Title Here</h4>
+        <p>Short description about this award or recognition received by Maleema.</p>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-img-wrap">
+        <img src="https://cdn.shopify.com/s/files/1/0682/5446/6245/files/DSC_3509.webp?v=1773311112" alt="Award 3"/>
+      </div>
+      <div class="award-body">
+        <div class="award-tag">Recognition · 2024</div>
+        <h4>Award Title Here</h4>
+        <p>Short description about this award or recognition received by Maleema.</p>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-img-wrap">
+        <img src="https://cdn.shopify.com/s/files/1/0682/5446/6245/files/DSC_3504.webp?v=1773311112" alt="Award 4"/>
+      </div>
+      <div class="award-body">
+        <div class="award-tag">Press · 2024</div>
+        <h4>Award Title Here</h4>
+        <p>Short description about this award or recognition received by Maleema.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
 
 <!-- SAMPLES -->
 <section id="samples"><div class="section-inner">
@@ -622,6 +698,7 @@ style="width:100%; height:auto;">
     <div class="f-col"><h5>Products</h5><ul><li><a href="#products">Banana Fibre Yarn</a></li><li><a href="#products">Banana Paper</a></li><li><a href="#products">Home Textiles</a></li><li><a href="#products">Fashion Textiles</a></li><li><a href="#products">Knit Textiles</a></li></ul></div>
     <div class="f-col"><h5>Brand</h5><ul><li><a href="#vision">Vision &amp; Mission</a></li><li><a href="#why">Why Banana Fibre</a></li><li><a href="#impact">Sustainability Impact</a></li><li><a href="#process">How It's Made</a></li></ul></div>
     <div class="f-col"><h5>Contact</h5><ul><li><a href="mailto:online@maleema.com">online@maleema.com</a></li><li><a href="#">Press &amp; Media</a></li></ul></div>
+    <li><a href="#press">Press &amp; Media</a></li>
   </div>
   <div class="footer-bottom">
     <p>© 2025 Maleema Textiles · Made in India · Changing Textiles</p>
