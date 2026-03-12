@@ -161,10 +161,13 @@ h2.shead em{font-style:italic;color:var(--sky);}
 .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
 .p-card{background:rgba(255,255,255,.03);border:1px solid rgba(96,165,250,.1);border-radius:14px;overflow:hidden;transition:all .3s;}
 .p-card:hover{background:rgba(37,99,235,.08);border-color:rgba(96,165,250,.32);transform:translateY(-4px);box-shadow:0 20px 48px rgba(5,13,31,.7);}
-.p-card-top{padding:32px 28px 26px;background:rgba(37,99,235,.07);border-bottom:1px solid rgba(96,165,250,.08);}
-.p-card-emoji{font-size:2.2rem;margin-bottom:12px;display:block;}
+.p-card-top{padding:0;background:none;border-bottom:1px solid rgba(96,165,250,.08);}
+.p-card-img{width:100%;height:200px;overflow:hidden;display:block;}
+.p-card-img img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.8);transition:transform .4s,filter .4s;}
+.p-card:hover .p-card-img img{transform:scale(1.06);filter:brightness(1);}
+.p-card-info{padding:18px 24px 14px;}
 .p-card-range{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sky);margin-bottom:4px;}
-.p-card-top h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--white);}
+.p-card-info h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--white);}
 .p-card-body{padding:20px 28px 28px;}
 .p-card-body p{font-size:.82rem;line-height:1.75;color:rgba(255,255,255,.45);font-weight:300;margin-bottom:16px;}
 .p-link{font-size:.72rem;font-weight:700;color:var(--sky);text-decoration:none;display:inline-flex;align-items:center;gap:5px;letter-spacing:.5px;text-transform:uppercase;}
@@ -236,7 +239,7 @@ footer{background:var(--navy);border-top:1px solid rgba(96,165,250,.1);padding:6
 .socials{display:flex;gap:8px;}
 .soc{width:34px;height:34px;border-radius:7px;background:rgba(255,255,255,.05);border:1px solid rgba(96,165,250,.14);display:flex;align-items:center;justify-content:center;font-size:.72rem;color:rgba(255,255,255,.45);text-decoration:none;transition:all .2s;}
 .soc:hover{background:var(--blue);border-color:var(--blue);color:var(--white);}
-
+@media(max-width:640px){.p-card-img{height:160px;}}
 /* ═══════════════════════════
    RESPONSIVE
 ═══════════════════════════ */
@@ -492,12 +495,48 @@ style="width:100%; height:auto;">
   <h2 class="shead">Six Ranges.<br/><em>One Plant.</em></h2>
   <p class="sdesc">From precision yarn for fashion to antimicrobial fabric for surgical applications everything Maleema makes starts in the same banana field.</p>
   <div class="product-grid">
-    <div class="p-card"><div class="p-card-top"><span class="p-card-emoji">🧶</span><div class="p-card-range">Range 01</div><h3>Yarn</h3></div><div class="p-card-body"><p>Single to 4-ply banana fibre yarn in natural off white. Silk like lustre, superior tensile strength. Available in multiple counts for knit and woven applications.</p><a href="#samples" class="p-link">Request sample</a></div></div>
-    <div class="p-card"><div class="p-card-top"><span class="p-card-emoji">🏠</span><div class="p-card-range">Range 02</div><h3>Home Textiles</h3></div><div class="p-card-body"><p>Woven panels, soft furnishing fabrics, and upholstery with natural earth texture. Durable, biodegradable, and tactile for interior applications.</p><a href="#samples" class="p-link">Request sample</a></div></div>
-    <div class="p-card"><div class="p-card-top"><span class="p-card-emoji">🏥</span><div class="p-card-range">Range 03</div><h3>Medical Textiles</h3></div><div class="p-card-body"><p>PPE kits, surgical fabrics, and hygiene grade materials. MaLeeMa is currently conducting R&D to explore banana fibre’s natural antimicrobial properties for future medical grade applications.</p><a href="#medical" class="p-link">Learn more</a></div></div>
-    <div class="p-card"><div class="p-card-top"><span class="p-card-emoji">👗</span><div class="p-card-range">Range 04</div><h3>Fashion &amp; Clothing</h3></div><div class="p-card-body"><p>Premium apparel-grade banana fibre fabric for conscious fashion brands. Soft, strong, and naturally lustrous ready for ethical fashion at scale.</p><a href="#samples" class="p-link">Request sample</a></div></div>
-    <div class="p-card"><div class="p-card-top"><span class="p-card-emoji">🧵</span><div class="p-card-range">Range 05</div><h3>Knit Textiles</h3></div><div class="p-card-body"><p>Banana fibre yarn engineered for knitting circular and flat knit compatible. Ideal for activewear, innerwear, and sustainable jersey construction.</p><a href="#samples" class="p-link">Request sample</a></div></div>
-    <div class="p-card"><div class="p-card-top"><span class="p-card-emoji">📄</span><div class="p-card-range">Range 06</div><h3>Banana Paper</h3></div><div class="p-card-body"><p>Translucent, flexible banana cellulose sheets for packaging, stationery, and industrial wrap. Stronger than tissue, fully compostable, and endlessly versatile.</p><a href="#samples" class="p-link">Request sample</a></div></div>
+    <div class="p-card">
+      <div class="p-card-top">
+        <div class="p-card-img"><img src="https://cdn.shopify.com/s/files/1/0682/5446/6245/files/WhatsApp_Image_2026-03-12_at_3.30.04_PM.jpg?v=1773309624" alt="Banana Fibre Yarn"/></div>
+        <div class="p-card-info"><div class="p-card-range">Range 01</div><h3>Yarn</h3></div>
+      </div>
+      <div class="p-card-body"><p>Single to 4-ply banana fibre yarn in natural off-white. Silk-like lustre, superior tensile strength. Available in multiple counts for knit and woven applications.</p><a href="#samples" class="p-link">Request sample</a></div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-top">
+        <div class="p-card-img"><img src="https://cdn.shopify.com/s/files/1/0682/5446/6245/files/Sofa-Cushion.jpg?v=1773309466" alt="Home Textiles"/></div>
+        <div class="p-card-info"><div class="p-card-range">Range 02</div><h3>Home Textiles</h3></div>
+      </div>
+      <div class="p-card-body"><p>Woven panels, soft furnishing fabrics, and upholstery with natural earth texture. Durable, biodegradable, and tactile for interior applications.</p><a href="#samples" class="p-link">Request sample</a></div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-top">
+        <div class="p-card-img"><img src="https://cdn.shopify.com/s/files/1/0682/5446/6245/files/personal-protective-equipment-kit-393.jpg?v=1773309466" alt="Medical Textiles"/></div>
+        <div class="p-card-info"><div class="p-card-range">Range 03</div><h3>Medical Textiles</h3></div>
+      </div>
+      <div class="p-card-body"><p>PPE kits, surgical fabrics, and hygiene-grade materials. Banana fibre's natural antimicrobial properties make it ideal for medical-grade applications.</p><a href="#medical" class="p-link">Learn more</a></div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-top">
+        <div class="p-card-img"><img src="YOUR_FASHION_IMAGE_URL" alt="Fashion &amp; Clothing"/></div>
+        <div class="p-card-info"><div class="p-card-range">Range 04</div><h3>Fashion &amp; Clothing</h3></div>
+      </div>
+      <div class="p-card-body"><p>Premium apparel-grade banana fibre fabric for conscious fashion brands. Soft, strong, and naturally lustrous — ready for ethical fashion at scale.</p><a href="#samples" class="p-link">Request sample</a></div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-top">
+        <div class="p-card-img"><img src="https://cdn.shopify.com/s/files/1/0682/5446/6245/files/WhatsApp_Image_2026-03-12_at_3.31.32_PM.jpg?v=1773309763" alt="Knit Textiles"/></div>
+        <div class="p-card-info"><div class="p-card-range">Range 05</div><h3>Knit Textiles</h3></div>
+      </div>
+      <div class="p-card-body"><p>Banana fibre yarn engineered for knitting — circular and flat knit compatible. Ideal for activewear, innerwear, and sustainable jersey construction.</p><a href="#samples" class="p-link">Request sample</a></div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-top">
+        <div class="p-card-img"><img src="https://cdn.shopify.com/s/files/1/0682/5446/6245/files/e96a302e6874da3bfe4ef1b1ec5f217e.jpg?v=1773310043" alt="Cellulose Sheets"/></div>
+        <div class="p-card-info"><div class="p-card-range">Range 06</div><h3>Cellulose Sheets</h3></div>
+      </div>
+      <div class="p-card-body"><p>Translucent, flexible banana cellulose sheets for packaging, stationery, and industrial wrap. Stronger than tissue, fully compostable, and endlessly versatile.</p><a href="#samples" class="p-link">Request sample</a></div>
+    </div>
   </div>
 </div></section>
 
