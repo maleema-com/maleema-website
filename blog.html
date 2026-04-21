@@ -1,8 +1,13 @@
 <div id="blog-container"></div>
 
 <script>
-fetch('blogs.json')
-  .then(response => response.json())
+fetch('/blogs.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("blogs.json not found");
+    }
+    return response.json();
+  })
   .then(blogs => {
     const container = document.getElementById('blog-container');
 
@@ -19,5 +24,10 @@ fetch('blogs.json')
 
       container.appendChild(div);
     });
+  })
+  .catch(error => {
+    document.getElementById('blog-container').innerHTML =
+      "<p>Blog not loading. Check console.</p>";
+    console.error("ERROR:", error);
   });
 </script>
