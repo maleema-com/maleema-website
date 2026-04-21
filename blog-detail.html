@@ -1,0 +1,24 @@
+<div id="blog-detail"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const blogId = params.get('id');
+
+fetch('./blog.json?v=20')
+  .then(res => res.json())
+  .then(blogs => {
+    const blog = blogs.find(b => b.id == blogId);
+    const container = document.getElementById('blog-detail');
+
+    if (blog) {
+      container.innerHTML = `
+        <h1>${blog.title}</h1>
+        <img src="${blog.image}" style="width:100%; max-width:800px;" />
+        <p><b>${blog.date}</b></p>
+        <div>${blog.body}</div>
+      `;
+    } else {
+      container.innerHTML = "<p>Blog not found</p>";
+    }
+  });
+</script>
