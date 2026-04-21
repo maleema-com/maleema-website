@@ -2,13 +2,12 @@
 
 <script>
 fetch('/blog.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error("blogs.json not found");
-    }
-    return response.json();
-  })
-  .then(blogs => {
+  .then(res => res.text())   // 👈 important
+  .then(text => {
+    console.log("DATA:", text);
+
+    const blogs = JSON.parse(text);  // 👈 manual parse
+
     const container = document.getElementById('blog-container');
 
     blogs.reverse().forEach(blog => {
@@ -25,9 +24,9 @@ fetch('/blog.json')
       container.appendChild(div);
     });
   })
-  .catch(error => {
+  .catch(err => {
+    console.error("ERROR:", err);
     document.getElementById('blog-container').innerHTML =
-      "<p>Blog not loading. Check console.</p>";
-    console.error("ERROR:", error);
+      "<p>Still not loading. Open console.</p>";
   });
 </script>
