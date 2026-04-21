@@ -17,7 +17,7 @@ fetch('/blog.json')
         <h2>${blog.title}</h2>
         <img src="${blog.image}" width="300"/>
         <p><b>${blog.date}</b></p>
-        <p>${blog.body.substring(0, 150)}...</p>
+        <div>${blog.body}</div>
         <hr/>
       `;
 
