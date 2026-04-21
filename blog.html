@@ -1,36 +1,29 @@
 <div id="blog-container"></div>
 
 <script>
-fetch('./blog.json?v=10')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error("File not found");
-    }
-    return response.json();
-  })
+fetch('./blog.json?v=20')
+  .then(res => res.json())
   .then(blogs => {
-    console.log("BLOGS:", blogs);
-
     const container = document.getElementById('blog-container');
-    container.innerHTML = ""; // clear old content
 
-    blogs.forEach(blog => {
+    blogs.reverse().slice(0, 3).forEach(blog => {
       const div = document.createElement('div');
 
       div.innerHTML = `
         <h2>${blog.title}</h2>
         <img src="${blog.image}" style="width:100%; max-width:600px;" />
         <p><b>${blog.date}</b></p>
-        <div>${blog.body}</div>
+        <p>${blog.body.replace(/<[^>]+>/g, '').substring(0, 150)}...</p>
+
+        <a href="blog-detail.html?id=${blog.id}" 
+           style="display:inline-block; margin:10px 0; padding:8px 16px; background:black; color:white; text-decoration:none;">
+           Read More →
+        </a>
+
         <hr/>
       `;
 
       container.appendChild(div);
     });
-  })
-  .catch(error => {
-    console.error("ERROR:", error);
-    document.getElementById('blog-container').innerHTML =
-      "<p>Still not loading. Check console.</p>";
   });
 </script>
