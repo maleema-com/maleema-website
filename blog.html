@@ -1,7 +1,7 @@
 <style>
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 20px;
 }
@@ -15,12 +15,33 @@
 
 .blog-card img {
   width: 100%;
-  height: 300px;        /* fixed height */
-  object-fit: cover;    /* crop nicely */
+  height: 200px;
+  object-fit: cover;
   border-radius: 8px;
 }
-}
 </style>
+
+<div class="blog-grid">
+  <div class="blog-card">
+    <img src="https://via.placeholder.com/400" />
+    <p>Card 1</p>
+  </div>
+
+  <div class="blog-card">
+    <img src="https://via.placeholder.com/400" />
+    <p>Card 2</p>
+  </div>
+
+  <div class="blog-card">
+    <img src="https://via.placeholder.com/400" />
+    <p>Card 3</p>
+  </div>
+
+  <div class="blog-card">
+    <img src="https://via.placeholder.com/400" />
+    <p>Card 4</p>
+  </div>
+</div>
 <div id="blog-container" class="blog-grid"></div>
 
 <script>
