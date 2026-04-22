@@ -37,7 +37,7 @@ fetch('./blog.json?v=20')
       div.innerHTML = `
         <h2>${blog.title}</h2>
         <img src="${blog.image}" />
-        <p><b>${blog.date}</b></p>
+        ${blog.date ? `<p><b>${blog.date}</b></p>` : ''}
         <p>${blog.body.replace(/<[^>]+>/g, '').substring(0, 150)}...</p>
 
         <a href="blog-detail.html?id=${blog.id}" 
